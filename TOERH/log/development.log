@@ -1,0 +1,3929 @@
+  [1m[36m (1.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateApiKeys (20140130134458)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "api_keys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "apiKey" varchar(255) NOT NULL, "unique" varchar(255) NOT NULL, "email" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140130134458"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveColumnUnique (20140130134710)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TEMPORARY TABLE "aapi_keys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "apiKey" varchar(255) NOT NULL, "unique" varchar(255) NOT NULL, "email" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "api_keys"
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "api_keys"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "api_keys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "apiKey" varchar(255) NOT NULL, "email" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "aapi_keys"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "aapi_keys"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140130134710"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/links" for 127.0.0.1 at 2014-01-30 14:51:13 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/links"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (30.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:51:18 +0100
+
+ActionController::RoutingError (uninitialized constant ApiKeysController):
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `const_get'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `block in constantize'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `each'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `inject'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `constantize'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:44:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2950595245195502983__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (17.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:51:49 +0100
+
+AbstractController::ActionNotFound (The action 'index' could not be found for ApiKeyController):
+  actionpack (4.0.2) lib/abstract_controller/base.rb:131:in `process'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2950595245195502983__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/unknown_action.erb within rescues/layout (0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:52:04 +0100
+Processing by ApiKeyController#index as HTML
+Completed 500 Internal Server Error in 20ms
+
+ActionView::MissingTemplate (Missing template api_key/index, application/index with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder, :coffee]}. Searched in:
+  * "/Users/Matthis/Sites/RoR/TOERH/app/views"
+):
+  actionpack (4.0.2) lib/action_view/path_set.rb:46:in `find'
+  actionpack (4.0.2) lib/action_view/lookup_context.rb:122:in `find'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:35:in `determine_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.2) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:403:in `_run__931955955092566108__process_action__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2950595245195502983__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:53:09 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 675ms (Views: 674.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 14:53:09 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 14:53:09 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 14:53:09 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 14:53:09 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 14:53:09 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 14:53:09 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 14:53:09 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:53:42 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 14:53:42 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 14:53:42 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 14:53:42 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 14:53:42 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 14:53:42 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 14:53:42 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 14:53:42 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:58:37 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (7.8ms)
+Completed 500 Internal Server Error in 12ms
+
+ActionView::Template::Error (undefined method `text_field_for' for #<#<Class:0x007f9ef3c3e4e0>:0x007f9ef2be87f8>):
+    2: 
+    3: <%= form_tag("/generate", method: "POST") do %>
+    4: 	<%= label_tag(:email, "Enter your email") %>
+    5: 	<%= text_field_for(:email) %>
+    6: 	<%= submit_tag("Generate key") %>
+    7: <% end -%>
+  app/views/api_key/index.html.erb:5:in `block in _app_views_api_key_index_html_erb___3222168605401567012_70160327089000'
+  app/views/api_key/index.html.erb:3:in `_app_views_api_key_index_html_erb___3222168605401567012_70160327089000'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 14:58:55 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 14:58:55 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 14:58:55 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 14:58:55 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 14:58:55 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 14:58:55 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 14:58:55 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 14:58:55 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:22:27 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:22:27 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:22:27 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:22:27 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:22:27 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:22:27 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:22:27 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:22:27 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:22:35 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:22:35 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:22:35 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:22:35 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:22:35 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:22:35 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:22:35 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:22:35 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:22:39 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `debug' for #<ApiKeyController:0x007f9ef2c54340>):
+  app/controllers/api_key_controller.rb:7:in `generate'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.8ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:23:59 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+Completed 500 Internal Server Error in 1ms
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/api_key_controller.rb:7:in `inspect'
+  app/controllers/api_key_controller.rb:7:in `generate'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.6ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:24:51 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `debug' for #<ApiKeyController:0x007f9ef48e8588>):
+  app/controllers/api_key_controller.rb:7:in `generate'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.7ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:25:22 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+Completed 500 Internal Server Error in 2ms
+
+ActionView::MissingTemplate (Missing template api_key/generate, application/generate with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder, :coffee]}. Searched in:
+  * "/Users/Matthis/Sites/RoR/TOERH/app/views"
+):
+  actionpack (4.0.2) lib/action_view/path_set.rb:46:in `find'
+  actionpack (4.0.2) lib/action_view/lookup_context.rb:122:in `find'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:35:in `determine_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.2) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:403:in `_run__931955955092566108__process_action__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2950595245195502983__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.4ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:27:45 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+Completed 500 Internal Server Error in 3ms
+
+ActionView::MissingTemplate (Missing template api_key/generate, application/generate with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder, :coffee]}. Searched in:
+  * "/Users/Matthis/Sites/RoR/TOERH/app/views"
+):
+  actionpack (4.0.2) lib/action_view/path_set.rb:46:in `find'
+  actionpack (4.0.2) lib/action_view/lookup_context.rb:122:in `find'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:35:in `determine_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.2) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:403:in `_run__931955955092566108__process_action__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:35:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2950595245195502983__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.4ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:30:45 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `permit' for "matthis@me.com":String):
+  app/controllers/api_key_controller.rb:16:in `apiKey_params'
+  app/controllers/api_key_controller.rb:8:in `generate'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.9ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:31:12 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `permit' for "matthis@me.com":String):
+  app/controllers/api_key_controller.rb:16:in `apiKey_params'
+  app/controllers/api_key_controller.rb:8:in `generate'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.3ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:31:40 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+Completed 500 Internal Server Error in 2ms
+
+LoadError (Unable to autoload constant APIKey, expected /Users/Matthis/Sites/RoR/TOERH/app/models/api_key.rb to define it):
+  app/controllers/api_key_controller.rb:10:in `generate'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.9ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:32:03 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+  Rendered api_key/generate.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 11ms (Views: 4.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:32:03 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:32:03 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:32:03 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:32:03 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:32:03 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:32:03 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:32:03 +0100
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" ORDER BY "api_keys"."id" ASC LIMIT 1[0m
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:32:57 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (35.9ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "6bea2652639917208dde"], ["created_at", Thu, 30 Jan 2014 14:32:57 UTC +00:00], ["email", "matthis@me.com"], ["updated_at", Thu, 30 Jan 2014 14:32:57 UTC +00:00]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  Rendered api_key/generate.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 54ms (Views: 3.9ms | ActiveRecord: 40.4ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:32:57 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:32:57 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:32:57 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:32:57 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:32:57 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:32:57 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:32:57 +0100
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" ORDER BY "api_keys"."id" ASC LIMIT 1
+
+
+Started GET "/generate" for 127.0.0.1 at 2014-01-30 15:36:08 +0100
+
+ActionController::RoutingError (No route matches [GET] "/generate"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (15.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:36:21 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:21 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:36:21 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:21 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:36:21 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:21 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:21 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:21 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:36:27 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"hej@hej.com", "commit"=>"Generate key"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)  [["apiKey", "a8e6fd8966fb181ce053"], ["created_at", Thu, 30 Jan 2014 14:36:27 UTC +00:00], ["email", "hej@hej.com"], ["updated_at", Thu, 30 Jan 2014 14:36:27 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+  Rendered api_key/generate.html.erb within layouts/application (7.5ms)
+Completed 500 Internal Server Error in 13ms
+
+ActionView::Template::Error (undefined local variable or method `apiKey' for #<#<Class:0x007f9ef3a39528>:0x007f9ef58860d0>):
+    1: <h1>Here is your key</h1>
+    2: 
+    3: <p><%= apiKey.apiKey %></p>
+  app/views/api_key/generate.html.erb:3:in `_app_views_api_key_generate_html_erb__1360320631789783667_70160350455540'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (10.7ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:36:37 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"hej@hej.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "529745d6ed6f561af786"], ["created_at", Thu, 30 Jan 2014 14:36:37 UTC +00:00], ["email", "hej@hej.com"], ["updated_at", Thu, 30 Jan 2014 14:36:37 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  Rendered api_key/generate.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 8ms (Views: 5.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:36:38 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:38 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:36:38 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:38 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:38 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:38 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:38 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:36:51 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"hej@hej.com", "commit"=>"Generate key"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)  [["apiKey", "81f5ed7e72f24a5c5907"], ["created_at", Thu, 30 Jan 2014 14:36:51 UTC +00:00], ["email", "hej@hej.com"], ["updated_at", Thu, 30 Jan 2014 14:36:51 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+  Rendered api_key/generate.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 7ms (Views: 3.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:36:51 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:51 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:51 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:36:51 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:51 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:51 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:36:51 +0100
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUniqueToEmailColumn (20140130143842)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TEMPORARY TABLE "aapi_keys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "apiKey" varchar(255) NOT NULL, "email" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "api_keys"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (1, '6bea2652639917208dde', 'matthis@me.com', '2014-01-30 14:32:57.854885', '2014-01-30 14:32:57.854885')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (2, 'a8e6fd8966fb181ce053', 'hej@hej.com', '2014-01-30 14:36:27.955979', '2014-01-30 14:36:27.955979')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (3, '529745d6ed6f561af786', 'hej@hej.com', '2014-01-30 14:36:37.949841', '2014-01-30 14:36:37.949841')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (4, '81f5ed7e72f24a5c5907', 'hej@hej.com', '2014-01-30 14:36:51.753906', '2014-01-30 14:36:51.753906')
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "api_keys"[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUniqueToEmailColumn (20140130143842)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TEMPORARY TABLE "aapi_keys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "apiKey" varchar(255) NOT NULL, "email" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "api_keys"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (1, '6bea2652639917208dde', 'matthis@me.com', '2014-01-30 14:32:57.854885', '2014-01-30 14:32:57.854885')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (2, 'a8e6fd8966fb181ce053', 'hej@hej.com', '2014-01-30 14:36:27.955979', '2014-01-30 14:36:27.955979')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (3, '529745d6ed6f561af786', 'hej@hej.com', '2014-01-30 14:36:37.949841', '2014-01-30 14:36:37.949841')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (4, '81f5ed7e72f24a5c5907', 'hej@hej.com', '2014-01-30 14:36:51.753906', '2014-01-30 14:36:51.753906')
+  [1m[36m (0.3ms)[0m  [1mDROP TABLE "api_keys"[0m
+  [1m[35m (2.3ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUniqueToEmailColumn (20140130143842)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUniqueToEmailColumn (20140130143842)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mCREATE TEMPORARY TABLE "aapi_keys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "apiKey" varchar(255) NOT NULL, "email" varchar(255) NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.2ms)[0m  SELECT * FROM "api_keys"
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (1, '6bea2652639917208dde', 'matthis@me.com', '2014-01-30 14:32:57.854885', '2014-01-30 14:32:57.854885')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (2, 'a8e6fd8966fb181ce053', 'hej@hej.com', '2014-01-30 14:36:27.955979', '2014-01-30 14:36:27.955979')
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (3, '529745d6ed6f561af786', 'hej@hej.com', '2014-01-30 14:36:37.949841', '2014-01-30 14:36:37.949841')[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "aapi_keys" ("id","apiKey","email","created_at","updated_at") VALUES (4, '81f5ed7e72f24a5c5907', 'hej@hej.com', '2014-01-30 14:36:51.753906', '2014-01-30 14:36:51.753906')
+  [1m[36m (0.5ms)[0m  [1mDROP TABLE "api_keys"[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:48:01 +0100
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+ActiveRecord::PendingMigrationError (Migrations are pending; run 'bin/rake db:migrate RAILS_ENV=development' to resolve this issue.):
+  activerecord (4.0.2) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.2) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2950595245195502983__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.6ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:49:05 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"hej@hej.com", "commit"=>"Generate key"}
+Completed 500 Internal Server Error in 3ms
+
+ArgumentError (Unknown validator: 'ApiKeyValidator'):
+  app/models/api_key.rb:2:in `<class:ApiKey>'
+  app/models/api_key.rb:1:in `<top (required)>'
+  app/controllers/api_key_controller.rb:10:in `generate'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.6ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:49:46 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"hej@hej.com", "commit"=>"Generate key"}
+Completed 500 Internal Server Error in 2ms
+
+ArgumentError (Unknown key: email):
+  app/controllers/api_key_controller.rb:10:in `generate'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.8ms)
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'matthis@me.com' LIMIT 1[0m
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:52:35 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"hej@hej.com", "commit"=>"Generate key"}
+Redirected to http://localhost:3000/
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)  [["apiKey", "994f574d2f8f806e3eb7"], ["created_at", Thu, 30 Jan 2014 14:52:35 UTC +00:00], ["email", "hej@hej.com"], ["updated_at", Thu, 30 Jan 2014 14:52:35 UTC +00:00]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+Completed 302 Found in 13ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:52:35 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:52:35 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:35 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:35 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:52:35 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:35 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:35 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:35 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:52:39 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:39 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:52:39 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:39 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:39 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:52:39 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:39 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:39 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:52:43 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+Redirected to http://localhost:3000/
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "4c2c0d883838f6ea145a"], ["created_at", Thu, 30 Jan 2014 14:52:43 UTC +00:00], ["email", "matthis@me.com"], ["updated_at", Thu, 30 Jan 2014 14:52:43 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:52:43 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:52:43 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:43 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:52:43 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:43 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:43 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:43 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:43 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:52:57 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"apan@apansson.com", "commit"=>"Generate key"}
+Redirected to http://localhost:3000/
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)  [["apiKey", "cc8a8138f58fb37a11da"], ["created_at", Thu, 30 Jan 2014 14:52:57 UTC +00:00], ["email", "apan@apansson.com"], ["updated_at", Thu, 30 Jan 2014 14:52:57 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Completed 302 Found in 3ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:52:57 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:52:57 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:57 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:57 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:52:57 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:57 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:57 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:52:57 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:53:14 +0100
+
+SyntaxError (/Users/Matthis/Sites/RoR/TOERH/app/controllers/api_key_controller.rb:11: syntax error, unexpected tSYMBEG, expecting keyword_do or '{' or '('
+			redirect_to :back
+			             ^
+/Users/Matthis/Sites/RoR/TOERH/app/controllers/api_key_controller.rb:23: syntax error, unexpected keyword_end, expecting end-of-input):
+  activesupport (4.0.2) lib/active_support/dependencies.rb:424:in `load'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:424:in `block in load_file'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:616:in `new_constants_in'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:423:in `load_file'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:324:in `require_or_load'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:463:in `load_missing_constant'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:184:in `const_missing'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `const_get'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `block in constantize'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `each'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `inject'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `constantize'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:535:in `get'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:566:in `constantize'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:44:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2950595245195502983__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:53:20 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:53:20 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:53:20 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:53:20 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:53:20 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:53:20 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:53:20 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:53:20 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:53:23 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'matthis@me.com'
+Completed 500 Internal Server Error in 9ms
+
+NoMethodError (undefined method `take?' for #<ActiveRecord::Relation::ActiveRecord_Relation_ApiKey:0x007f9ef3e24818>):
+  app/controllers/api_key_controller.rb:10:in `generate'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'a@b.com' LIMIT 1
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:54:22 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'matthis@me.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "dbcf44c9c087d59ed6c2"], ["created_at", Thu, 30 Jan 2014 14:54:22 UTC +00:00], ["email", "matthis@me.com"], ["updated_at", Thu, 30 Jan 2014 14:54:22 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Completed 302 Found in 44ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:54:22 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:54:22 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:54:22 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:54:22 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:54:22 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:54:22 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:54:22 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:54:22 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:54:29 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"a@b.com", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'a@b.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "9c5517d4cf703d629563"], ["created_at", Thu, 30 Jan 2014 14:54:29 UTC +00:00], ["email", "a@b.com"], ["updated_at", Thu, 30 Jan 2014 14:54:29 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  Rendered api_key/generate.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 7ms (Views: 3.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:54:29 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:54:29 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:54:29 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:54:29 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:54:29 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:54:29 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:54:29 +0100
+
+
+Started GET "/generate" for 127.0.0.1 at 2014-01-30 15:55:54 +0100
+
+ActionController::RoutingError (No route matches [GET] "/generate"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (16.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 15:56:16 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:56:16 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:56:16 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:56:16 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:56:16 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:56:16 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:56:16 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:56:16 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 15:56:19 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered api_key/generate.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 12ms (Views: 3.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 15:56:19 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 15:56:19 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 15:56:19 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 15:56:19 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 15:56:19 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 15:56:19 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 15:56:19 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:00:02 +0100
+
+SyntaxError (/Users/Matthis/Sites/RoR/TOERH/app/controllers/api_key_controller.rb:25: syntax error, unexpected end-of-input, expecting keyword_end):
+  activesupport (4.0.2) lib/active_support/dependencies.rb:424:in `load'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:424:in `block in load_file'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:616:in `new_constants_in'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:423:in `load_file'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:324:in `require_or_load'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:463:in `load_missing_constant'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:184:in `const_missing'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `const_get'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `block in constantize'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `each'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `inject'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `constantize'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:535:in `get'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:566:in `constantize'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:44:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2950595245195502983__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/Matthis/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:00:13 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:00:13 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:00:13 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:00:13 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:00:13 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:00:13 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:00:13 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:00:13 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:00:15 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered api_key/generate.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 14ms (Views: 4.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:00:15 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:00:16 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:00:16 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:00:16 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:00:16 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:00:16 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:00:16 +0100
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:01:58 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:01:58 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:01:58 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:01:58 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:01:58 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:01:58 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:01:58 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:01:58 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:02:00 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:02:00 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:02:00 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:00 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:00 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:00 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:02:00 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:00 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:00 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:02:01 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:02:01 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:02:01 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:01 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:01 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:01 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:02:01 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:01 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:01 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:02:02 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:02:02 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:02:02 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:02:02 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:02 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:02 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:02 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:02 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:02:02 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:05:03 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:05:03 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:03 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:03 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:03 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:05:03 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:03 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:03 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:05:05 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:05:05 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:05:05 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:05 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:05:05 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:05 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:05 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:05 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:05 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:05:28 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered api_key/generate.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 14ms (Views: 4.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:28 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:05:28 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:28 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:28 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:28 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:05:28 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:05:28 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:06:14 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered api_key/generate.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 14ms (Views: 4.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:06:14 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:06:14 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:06:14 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:06:14 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:06:14 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:06:14 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:06:14 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:09:21 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 42ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:09:22 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:09:22 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:09:22 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:09:22 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:09:22 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:09:22 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:09:22 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:09:22 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:11:18 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:11:18 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:18 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:18 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:11:18 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:18 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:18 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:18 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:11:19 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:11:19 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:11:20 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:11:20 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:20 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:20 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:20 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:20 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:20 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:11:22 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:11:22 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:22 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:11:22 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:22 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:22 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:22 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:22 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:11:23 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:11:23 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:11:23 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:11:23 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:23 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:23 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:23 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:23 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:11:23 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:24:29 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 39ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:24:29 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:29 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:24:29 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:29 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:29 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:29 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:29 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:24:30 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:24:30 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:24:30 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:30 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:30 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:30 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:30 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:30 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:24:32 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:24:32 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:24:32 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:32 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:24:32 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:32 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:32 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:32 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:32 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:24:33 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:24:33 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:24:33 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:33 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:24:33 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:33 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:33 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:33 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:24:33 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:25:26 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:26 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:26 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:26 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:26 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:26 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:26 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:26 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:25:27 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1
+Completed 302 Found in 10ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:25:27 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:27 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:27 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:27 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:27 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:27 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:27 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:27 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:25:41 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:41 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:41 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:41 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:41 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:41 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:41 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:41 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:25:42 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:25:42 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:42 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:42 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:42 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:42 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:42 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:42 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:42 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:25:45 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "6f3e6e2ec9a543116f8f"], ["created_at", Thu, 30 Jan 2014 15:25:45 UTC +00:00], ["email", "matthis@me.com"], ["updated_at", Thu, 30 Jan 2014 15:25:45 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'matthis@me.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:25:45 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:45 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:45 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:45 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:45 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:45 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:45 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:45 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:25:47 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:47 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:47 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:47 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:47 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:47 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:25:47 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:25:47 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 10ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:12 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:13 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:14 +0100
+Processing by ApiKeyController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" IS NULL LIMIT 1[0m
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:33 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:27:33 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:27:33 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:27:33 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:27:33 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:27:33 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:27:33 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:27:33 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:27:34 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:27:35 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:27:35 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:27:35 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:27:35 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:27:35 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:27:35 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:27:35 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:29:54 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:29:54 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:29:54 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:29:54 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:29:54 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:29:54 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:29:54 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:29:54 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:29:58 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"test@me.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "46b68baa4a4dfb3b9efe"], ["created_at", Thu, 30 Jan 2014 15:29:58 UTC +00:00], ["email", "test@me.com"], ["updated_at", Thu, 30 Jan 2014 15:29:58 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'test@me.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Redirected to 
+Completed 500 Internal Server Error in 11ms
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/api_key_controller.rb:23:in `generate'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.0ms)
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:30:40 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"test@me.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "ebe97b1447dbed462c4e"], ["created_at", Thu, 30 Jan 2014 15:30:40 UTC +00:00], ["email", "test@me.com"], ["updated_at", Thu, 30 Jan 2014 15:30:40 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'test@me.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:30:40 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:30:40 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:30:40 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:30:40 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:30:40 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:30:40 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:30:40 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:30:40 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:30:53 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"q@m.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "aaad964517b1f94b432f"], ["created_at", Thu, 30 Jan 2014 15:30:53 UTC +00:00], ["email", "q@m.com"], ["updated_at", Thu, 30 Jan 2014 15:30:53 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'q@m.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:30:53 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:30:54 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:30:54 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:30:54 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:30:54 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:30:54 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:30:54 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:30:54 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:31:36 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:31:36 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:31:36 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:31:36 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:31:36 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:31:36 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:31:36 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:31:36 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:31:39 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:31:39 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:31:39 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:31:39 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:31:39 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:31:39 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:31:39 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:31:39 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:31:39 +0100
+  [1m[35mApiKey Load (0.4ms)[0m  SELECT "api_keys".* FROM "api_keys"
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" ORDER BY "api_keys"."id" DESC LIMIT 1[0m
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:32:13 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"r@f.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "f949d553f3229a646272"], ["created_at", Thu, 30 Jan 2014 15:32:13 UTC +00:00], ["email", "r@f.com"], ["updated_at", Thu, 30 Jan 2014 15:32:13 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'r@f.com' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:32:13 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:32:13 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:32:13 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:32:13 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:32:13 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:32:13 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:32:13 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:32:13 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:34:45 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:34:46 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:34:46 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:34:46 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:34:46 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:34:46 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:34:46 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:34:46 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:34:51 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"dfgfg@fd.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "88d4985c6b3a895bbc25"], ["created_at", Thu, 30 Jan 2014 15:34:51 UTC +00:00], ["email", "dfgfg@fd.com"], ["updated_at", Thu, 30 Jan 2014 15:34:51 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'dfgfg@fd.com'[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:34:51 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:34:51 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:34:51 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:34:51 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:34:51 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:34:51 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:34:51 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:34:51 +0100
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" ORDER BY "api_keys"."id" DESC LIMIT 1
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" ORDER BY "api_keys"."id" DESC LIMIT 1[0m
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'matthis@me.com'
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:36:35 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:36:35 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:36:35 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:36:35 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:36:35 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:36:35 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:36:35 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:36:35 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:36:39 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"sdfsdfdsf@dsfsdf.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "13ef41457b2312ec9dac"], ["created_at", Thu, 30 Jan 2014 15:36:39 UTC +00:00], ["email", "sdfsdfdsf@dsfsdf.com"], ["updated_at", Thu, 30 Jan 2014 15:36:39 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'sdfsdfdsf@dsfsdf.com'[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:36:39 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:36:39 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:36:39 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:36:39 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:36:39 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:36:39 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:36:39 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:36:39 +0100
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'sdfsdfdsfsdfsdfsdfsdfsdf@fsdfsdfodskf.com'[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:37:51 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:51 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:51 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:51 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:51 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:51 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:51 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:51 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:37:52 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:53 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:53 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:53 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:53 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:37:53 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:53 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:37:53 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:38:01 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"dfsdfsfsdfsdf.sfsidfjisdjf@ds.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "377c385734a52c38edc2"], ["created_at", Thu, 30 Jan 2014 15:38:01 UTC +00:00], ["email", "dfsdfsfsdfsdf.sfsidfjisdjf@ds.com"], ["updated_at", Thu, 30 Jan 2014 15:38:01 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'dfsdfsfsdfsdf.sfsidfjisdjf@ds.com'[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:38:01 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:38:01 +0100
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'sdfsdfdsfsdfsdfsdfsdfsdf@fsdfsdfodskf.com'
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" ORDER BY "api_keys"."id" DESC LIMIT 1[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:41:26 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:41:26 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:41:26 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:41:26 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:41:26 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:41:26 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:41:26 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:41:26 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:41:34 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"fsfsdfsd@vdfgdfgfd.se", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "00aa07686cf64b8ecd4f"], ["created_at", Thu, 30 Jan 2014 15:41:34 UTC +00:00], ["email", "fsfsdfsd@vdfgdfgfd.se"], ["updated_at", Thu, 30 Jan 2014 15:41:34 UTC +00:00]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'fsfsdfsd@vdfgdfgfd.se'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'fsfsdfsd@vdfgdfgfd.se'
+Redirected to http://localhost:3000/
+Completed 302 Found in 14ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:41:34 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:41:34 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:41:34 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:41:34 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:41:34 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:41:34 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:41:34 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:41:34 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:43:51 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:43:51 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:43:51 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:43:51 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:43:51 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:43:51 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:43:51 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:43:51 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:44:08 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:44:08 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:44:08 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:08 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:08 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:08 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:08 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:08 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:44:13 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"sdfsdfsdf@dfds.cmo", "commit"=>"Generate key"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)  [["apiKey", "b5daedfea5e1344a3ca4"], ["created_at", Thu, 30 Jan 2014 15:44:13 UTC +00:00], ["email", "sdfsdfsdf@dfds.cmo"], ["updated_at", Thu, 30 Jan 2014 15:44:13 UTC +00:00]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'sdfsdfsdf@dfds.cmo'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'sdfsdfsdf@dfds.cmo'[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:44:13 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:44:13 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:44:13 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:13 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:13 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:13 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:13 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:13 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:44:32 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:44:32 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:44:32 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:32 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:32 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:32 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:32 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:32 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:44:36 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"sfjsdfjklsdjf@jf.com", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "400b7f8bb1effb8c44be"], ["created_at", Thu, 30 Jan 2014 15:44:36 UTC +00:00], ["email", "sfjsdfjklsdjf@jf.com"], ["updated_at", Thu, 30 Jan 2014 15:44:36 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'sfjsdfjklsdjf@jf.com'[0m
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'sfjsdfjklsdjf@jf.com' LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:44:36 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:44:36 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:44:36 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:36 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:36 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:36 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:36 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:44:36 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:45:12 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:12 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:12 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:45:12 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:12 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:45:12 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:12 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:12 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:45:15 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"dsfsdflsdkl@kdjsfkjsdf.com", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'dsfsdflsdkl@kdjsfkjsdf.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "1f197a6a1b0b38072d9d"], ["created_at", Thu, 30 Jan 2014 15:45:15 UTC +00:00], ["email", "dsfsdflsdkl@kdjsfkjsdf.com"], ["updated_at", Thu, 30 Jan 2014 15:45:15 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'dsfsdflsdkl@kdjsfkjsdf.com'[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:45:15 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:45:15 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:15 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:15 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:15 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:45:15 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:15 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:15 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:45:35 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+  [1m[35mApiKey Load (0.1ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'matthis@me.com' LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:45:35 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:45:36 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:45:36 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:36 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:36 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:36 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:36 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:36 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:45:50 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:45:50 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:50 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:45:50 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:50 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:50 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:50 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:50 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:45:55 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"dsfsdgfgf.sdf@df.com", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'dsfsdgfgf.sdf@df.com'[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["apiKey", "7ca5396ac27888547707"], ["created_at", Thu, 30 Jan 2014 15:45:55 UTC +00:00], ["email", "dsfsdgfgf.sdf@df.com"], ["updated_at", Thu, 30 Jan 2014 15:45:55 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:45:55 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:45:55 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:55 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:55 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:45:55 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:55 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:55 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:45:55 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:46:01 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.2ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'matthis@me.com'[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:46:01 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:46:01 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:46:01 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:46:01 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:46:01 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:46:01 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:46:01 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:46:01 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:46:04 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"", "commit"=>"Generate key"}
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = ''
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:46:04 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:46:04 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:46:04 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:46:04 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:46:04 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:46:04 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:46:04 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:46:04 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:50:03 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:50:03 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:03 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:03 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:50:03 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:03 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:03 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:03 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:50:07 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"matthis@me.com", "commit"=>"Generate key"}
+  [1m[36mApiKey Load (0.1ms)[0m  [1mSELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'matthis@me.com'[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:50:07 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:50:07 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:50:07 +0100
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:07 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:07 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:07 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:07 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:07 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-01-30 16:50:58 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lul5fE41RGdAG9iHpiVFyDA3i4B2Wzz0Tv/t0cN3O2c=", "email"=>"j@m.com", "commit"=>"Generate key"}
+  [1m[35mApiKey Load (0.2ms)[0m  SELECT "api_keys".* FROM "api_keys" WHERE "api_keys"."email" = 'j@m.com'
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "api_keys" ("apiKey", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)  [["apiKey", "436e90c7c913236949a0"], ["created_at", Thu, 30 Jan 2014 15:50:58 UTC +00:00], ["email", "j@m.com"], ["updated_at", Thu, 30 Jan 2014 15:50:58 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:50:58 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:58 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:50:58 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:50:58 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:58 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:58 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:58 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:50:58 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-01-30 16:51:05 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-01-30 16:51:05 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-01-30 16:51:05 +0100
+
+
+Started GET "/assets/api_key.css?body=1" for 127.0.0.1 at 2014-01-30 16:51:05 +0100
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-01-30 16:51:05 +0100
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-01-30 16:51:05 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-01-30 16:51:05 +0100
+
+
+Started GET "/assets/api_key.js?body=1" for 127.0.0.1 at 2014-01-30 16:51:05 +0100

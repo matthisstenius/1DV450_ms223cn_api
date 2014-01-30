@@ -1,0 +1,16 @@
+<h1>Här kan du registrera din applikation för en API-Nyckel</h1>
+
+
+<%= flash[:error] %>
+
+<%= form_tag("/generate", method: "POST") do %>
+	<%= label_tag(:email, "Enter your email") %>
+	<%= text_field_tag(:email) %>
+	<%= submit_tag("Generate key") %>
+<% end -%>
+
+<% if flash[:apiKey] %>
+	<h2>Here is your key</h2>
+
+	<p><%= flash[:apiKey].apiKey %></p>
+<% end %>
