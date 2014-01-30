@@ -7,15 +7,10 @@ class ApiKeyController < ApplicationController
 		apiKey = SecureRandom.hex(10)
 		email = params[:email]
 
-		if ApiKey.where(:email => email).present?
-			flash[:error] = "This email has already been registerd"
-			return redirect_to :back
-		end
-
 		apiKey = ApiKey.create(apiKey: apiKey, email: email)
 
 		if apiKey.invalid?
-			flash[:error] = "Email can't be blank"
+			flash[:error] = apiKey.errors[:email].first
 			return redirect_to :back
 		end
 		
