@@ -1,0 +1,10 @@
+<%= flash[:error] %>
+
+<%= form_tag(login_path, method: "POST") do %>
+	<%= label_tag(:email, "Enter your email") %>
+	<%= text_field_tag(:email) %>
+
+	<%= label_tag(:password, "Enter your password") %>
+	<%= password_field_tag(:password) %>
+	<%= submit_tag("Login") %>
+<% end -%>

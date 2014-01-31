@@ -3,7 +3,7 @@
 
 <%= flash[:error] %>
 
-<%= form_tag("/generate", method: "POST") do %>
+<%= form_tag(generate_path, method: "POST") do %>
 	<%= label_tag(:email, "Enter your email") %>
 	<%= text_field_tag(:email) %>
 	<%= submit_tag("Generate key") %>

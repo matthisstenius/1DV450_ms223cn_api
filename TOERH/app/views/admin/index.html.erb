@@ -1,0 +1,5 @@
+<% @apiKeys.each do |apiKey| %>
+	<p><%= apiKey.apiKey %></p>
+	<p><%= apiKey.email %></p>
+	<%= link_to('Remove Key', admin_path(apiKey), method: :delete ) %>
+<% end -%>

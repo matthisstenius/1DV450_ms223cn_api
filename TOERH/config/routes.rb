@@ -5,7 +5,13 @@ TOERH::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'api_key#index'
 
-  post 'generate' => 'api_key#generate'
+  post 'generate' => 'api_key#generate', as: :generate
+
+  resources :admin
+
+  get 'login' => 'auth#index', as: :showLogin
+  post 'login' => 'auth#login', as: :login
+  get 'logout' => 'auth#logout', as: :logout
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
