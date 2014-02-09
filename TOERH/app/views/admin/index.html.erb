@@ -1,5 +1,12 @@
+<h1>Manage API-keys</h1>
+
+<%= link_to('Logout', logout_path, :class => 'btn') %>
+
 <% @apiKeys.each do |apiKey| %>
-	<p><%= apiKey.apiKey %></p>
-	<p><%= apiKey.email %></p>
-	<%= link_to('Remove Key', admin_path(apiKey), method: :delete ) %>
+	<div class="key-manage box">
+		<p><%= apiKey.email %></p>
+		<p><%= apiKey.apiKey %></p>
+		<%= link_to('Remove Key', admin_path(apiKey), method: :delete ) %>	
+	</div>
+	
 <% end -%>

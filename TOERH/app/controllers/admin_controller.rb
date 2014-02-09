@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+	before_action :require_login
+	
 	def index
 		@apiKeys = ApiKey.all
 	end

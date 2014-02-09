@@ -15,4 +15,9 @@ class AuthController < ApplicationController
 		flash[:error] = 'Wrong username or password'
 		redirect_to :back
 	end
+
+	def logout
+		session.delete(:admin)
+		redirect_to :root
+	end
 end
