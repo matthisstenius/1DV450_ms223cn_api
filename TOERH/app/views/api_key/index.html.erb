@@ -9,8 +9,9 @@
 
 <% if flash[:apiKey] %>
 	<div class="key-container box">
-		<h2>Here is your key:</h2>
-
-		<p><%= flash[:apiKey].apiKey %></p>
+		<h2>Here is your credentials for using the API:</h2>
+		
+		<span>Apikey:</span>
+		<p><%= flash[:apiKey] %></p>
 	</div>
 <% end %>

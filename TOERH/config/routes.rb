@@ -1,4 +1,5 @@
 TOERH::Application.routes.draw do
+  get "resources/api/v1"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,6 +14,11 @@ TOERH::Application.routes.draw do
   post 'login' => 'auth#login', as: :login
   get 'logout' => 'auth#logout', as: :logout
 
+  namespace :api do
+    namespace :v1 do
+      resources :resources
+    end
+  end 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

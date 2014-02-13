@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131151102) do
+ActiveRecord::Schema.define(version: 20140211195225) do
 
   create_table "admins", force: true do |t|
     t.string   "email",           null: false
@@ -21,7 +21,53 @@ ActiveRecord::Schema.define(version: 20140131151102) do
   end
 
   create_table "api_keys", force: true do |t|
-    t.string   "apiKey",     null: false
+    t.string   "email",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "api_key"
+  end
+
+  create_table "licences", force: true do |t|
+    t.string   "licence_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resource_types", force: true do |t|
+    t.string   "resource_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resources", force: true do |t|
+    t.string   "name",             null: false
+    t.string   "description",      null: false
+    t.string   "url",              null: false
+    t.integer  "user_id",          null: false
+    t.integer  "resource_type_id", null: false
+    t.integer  "licence_id",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resources_tags", id: false, force: true do |t|
+    t.integer  "resource_id", null: false
+    t.integer  "tag_id",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "resources_tags", ["resource_id", "tag_id"], name: "index_resources_tags_on_resource_id_and_tag_id"
+
+  create_table "tags", force: true do |t|
+    t.string   "tag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "firstname",  null: false
+    t.string   "surname",    null: false
     t.string   "email",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"

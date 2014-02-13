@@ -7,14 +7,15 @@ class ApiKeyController < ApplicationController
 		apiKey = SecureRandom.hex(10)
 		email = params[:email]
 
-		apiKey = ApiKey.create(apiKey: apiKey, email: email)
+		app = ApiKey.create(api_key: apiKey, email: email)
 
-		if apiKey.invalid?
-			flash[:error] = apiKey.errors[:email].first
+		if app.invalid?
+			flash[:error] = app.errors[:email].first
 			return redirect_to :back
 		end
-		
+
 		flash[:apiKey] = apiKey
+
 		redirect_to :root
 	end
 

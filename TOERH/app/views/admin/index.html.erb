@@ -4,8 +4,9 @@
 
 <% @apiKeys.each do |apiKey| %>
 	<div class="key-manage box">
+		<span>Email:</span>
 		<p><%= apiKey.email %></p>
-		<p><%= apiKey.apiKey %></p>
+
 		<%= link_to('Remove Key', admin_path(apiKey), method: :delete ) %>	
 	</div>
 	
