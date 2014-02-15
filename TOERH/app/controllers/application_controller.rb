@@ -28,14 +28,14 @@ class ApplicationController < ActionController::Base
     case exception
     when ActiveRecord::RecordNotFound
       not_found
-    # else 
-    #   internal_server_error
+    when Exception 
+      internal_server_error
     end
   end
 
   def not_found
     response.status = 404
-    errorResponse = {status: 404, message: "The requested resource with ID could not be found"}
+    errorResponse = {status: 404, message: "The requested resource with ID: #{params[:id]} could not be found"}
 
     respond_to do |format|
       format.xml { render xml: errorResponse}
