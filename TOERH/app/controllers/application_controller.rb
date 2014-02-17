@@ -1,3 +1,5 @@
+require "#{Rails.root}/app/TOERH/APIAuth"
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -10,9 +12,11 @@ class ApplicationController < ActionController::Base
   end
 
   def api_access_granted
-    token = request.authorization()
-    
-  	unless ApiKey.exists?(api_key: token)
+    begin
+      apiAuth = TOERH::APIAuth.new
+      apiAuth.api_access(request.authorization())
+    rescue Exception => e
+      puts e
   		errorResponse = [status: 401, message: 'The request is not authorized. Please check that the Authorization header is included in the request.']
 
   		response.status = 401
@@ -28,6 +32,8 @@ class ApplicationController < ActionController::Base
     case exception
     when ActiveRecord::RecordNotFound
       not_found
+    when ActiveRecord::RecordInvalid
+      invalid_record_error(exception.record.errors)
     when Exception 
       internal_server_error
     end
@@ -38,6 +44,18 @@ class ApplicationController < ActionController::Base
     errorResponse = {status: 404, message: "The requested resource with ID: #{params[:id]} could not be found"}
 
     respond_to do |format|
+      format.xml { render xml: errorResponse}
+      format.json {render json: errorResponse}
+    end
+  end
+
+  def invalid_record_error(errors)
+    response.status = 400
+
+    errorResponse = {status: 400, message: 'There are errors in the request. Please correct the errors and try again', 
+      errors: errors}
+
+      respond_to do |format|
       format.xml { render xml: errorResponse}
       format.json {render json: errorResponse}
     end

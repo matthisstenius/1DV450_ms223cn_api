@@ -7,8 +7,12 @@ class Api::V1::ResourcesController < ApplicationController
 		limit = params[:limit] || 25
 		offset = params[:offset] || 0
 
-		resources = Resource.limit(limit).offset(offset).order(id: :desc)
-		
+		if params[:user_id]
+			resources = Resource.limit(limit).offset(offset).order(id: :desc).where(user_id: params[:user_id])
+		else
+			resources = Resource.limit(limit).offset(offset).order(id: :desc)
+		end
+
 		if resources
 			data = resources.map do |resource|
 				format_data(resource)
@@ -42,76 +46,26 @@ class Api::V1::ResourcesController < ApplicationController
 	end	
 
 	def create
-		resource = Resource.new 
 
-		resource.name = params[:name]
-		resource.description = params[:description]
-		resource.url = params[:url]
-		resource.user = User.where(user_id: params[:user_id]).take!
-		resource.resource_type = ResourceType.where(resource_type: params[:resource_type]).first_or_create
-		resource.licence = Licence.where(licence_type: params[:licence]).first_or_create
+		resource = Resource.new.add(params)
 
-		resource.save
+		data = format_data(resource)
 
-		if resource.valid?
-			tags = params[:tags]
+		response.status = 201
 
-			if tags
-				tags = tags.split(',')
-
-				tags.each do |tag|
-					resource.tags << Tag.create(tag: tag)
-				end
-			end
-
-			data = format_data(resource)
-
-			response.status = 201
-
-			result = {status: 201, message: 'Created resource successfully', items: data}
-		else
-			response.status = 400
-
-			result = {status: 400, message: 'There are errors in the request. Please correct the errors and try again', 
-				errors: resource.errors}
-		end
+		result = {status: 201, message: 'Created resource successfully', items: data}
 
 		respond_with result, location: nil
 	end
 
 	def update
 		resource = Resource.where(resource_id: params[:id]).take!
+		resource.add(params)
+	
+		data = format_data(resource)
 
-		updatedResource = resource.update(
-			name: params[:name], 
-			url: params[:url], 
-			description: params[:description], 
-			user_id: params[:user_id],
-			resource_type_id: params[:resource_type_id], 
-			licence_id: params[:licence_id])
-		
-		if updatedResource
-			tags = params[:tags]
-
-			if tags
-				tags.split(',')
-
-				tags.each do |tag|
-					resource.tags << Tag.create(tag: tag)
-				end
-			end
-
-			data = format_data(updatedResource)
-
-			response.status = 201
-
-			result = {status: 201, message: 'Updated resource successfully', items: data}
-		else
-			response.status = 400
-
-			result = {status: 400, message: 'There are errors in the request. Please correct the errors and try again', 
-				errors: resource.errors}
-		end
+		response.status = 201
+		result = {status: 201, message: 'Updated resource successfully', items: data}
 		
 		respond_with do |format|
 			format.json {render json: result}
@@ -134,13 +88,7 @@ class Api::V1::ResourcesController < ApplicationController
 
 	private
 
-	def resource_params
-		puts params
-		params.require(Resource).permit(:name, :url, :description, :user_id, :resource_type_id, :licence_id)
-	end
-
 	def format_data(resource)
-		puts resource.tags.inspect
 		data = {
 			data: {
 				id: resource.resource_id,
