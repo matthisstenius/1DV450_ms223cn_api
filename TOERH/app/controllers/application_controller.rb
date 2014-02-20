@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
       apiAuth = TOERH::APIAuth.new
       apiAuth.api_access(request.authorization())
     rescue Exception => e
-      puts e
   		errorResponse = [status: 401, message: 'The request is not authorized. Please check that the Authorization header is included in the request.']
 
   		response.status = 401
@@ -31,7 +30,7 @@ class ApplicationController < ActionController::Base
   def handle_exception(exception)
     case exception
     when ActiveRecord::RecordNotFound
-      not_found
+      not_found(exception)
     when ActiveRecord::RecordInvalid
       invalid_record_error(exception.record.errors)
     when Exception 
@@ -39,9 +38,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def not_found
+  def not_found(exception)
     response.status = 404
-    errorResponse = {status: 404, message: "The requested resource with ID: #{params[:id]} could not be found"}
+                
+    errorResponse = {status: 404, message: "The requested item/items could not be found. Please check the ID/ID's and try again"}
 
     respond_to do |format|
       format.xml { render xml: errorResponse}

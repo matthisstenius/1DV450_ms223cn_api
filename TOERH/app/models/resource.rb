@@ -7,37 +7,62 @@ class Resource < ActiveRecord::Base
 
 	has_and_belongs_to_many :tags
 
-	validates :name, presence: {message: 'Missing name parameter.'}
-	validates :description, presence: {message: 'Missing description parameter.'}
+	validates :name, presence: {message: 'Invalid name. Must be string.'}
+	validates :description, presence: {message: 'Invalid descripton. Must be string'}
 
-	validates :url, presence: {message: 'Missing url parameter.'}
-	validates_format_of :url, with: /(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-z]+(\/\S*)?/, message: 'URL parameter has a incorrect format'
+	validates :url, presence: {message: 'Missing url. Must be string'}
+	validates_format_of :url, with: /(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-z]+(\/\S*)?/, message: 'URL parameter has a incorrect format. Use http://www.example.com'
 
-	validates :user_id, presence: {message: 'Missing user_id parameter'}, numericality: {message: 'user_id have to be of type integer'}
+	validates :user_id, presence: {message: 'Missing user_id parameter'}
 
 	validates :resource_type_id, presence: {message: 'Missing resource_type parameter'}
 
 	validates :licence_id, presence: {message: 'Missing licence_type parameter'}
 
-	#validates_associated :licence, :resource_type, :user, {message: "Missing or invalid parameter"}
+	def getResources(params)
+		limit = params[:limit] || 25
+		offset = params[:offset] || 0
+
+		if params[:user_id]
+			user = User.where(user_id: params[:user_id]).take!
+			resources = Resource.where(user_id: user.id)
+		elsif params[:licence_id]
+			licence = Licence.where(licence_id: params[:licence_id]).take!
+			resources = Resource.limit(limit).offset(offset).order(id: :desc).where(licence_id: licence.id)
+		elsif params[:resourcetype_id]
+			resourcetype = ResourceType.where(resource_type_id: params[:resourcetype_id]).take!
+			resources = Resource.limit(limit).offset(offset).order(id: :desc).where(resource_type_id: resourcetype.id)
+		elsif params[:search]
+			resources = Resource.limit(limit).offset(offset).order(id: :desc).where("name like ?", "%#{params[:search]}%")
+		else
+			resources = Resource.limit(limit).offset(offset).order(id: :desc)
+		end
+	end
+
+	def getResource(params)
+		if params[:user_id]
+			user = User.where(user_id: params[:user_id]).take!
+			resource = Resource.where(user_id: user.id).take!
+		else
+			resource = Resource.where(resource_id: params[:id]).take!
+		end
+	end
 
 	def add(input)
 		self.name = input[:name]
 		self.description = input[:description]
 		self.url = input[:url]
-		self.user = User.where(user_id: input[:user_id]).take
-		self.resource_type = ResourceType.where(resource_type: input[:resource_type]).first_or_create
-		self.licence = Licence.where(licence_type: input[:licence_type]).first_or_create
+		self.user = User.where(user_id: input[:user_id]).take!
+		self.resource_type = ResourceType.where(resource_type_id: input[:resource_type_id]).take!
+		self.licence = Licence.where(licence_id: input[:licence_id]).take!
 
 		self.save!
 
 		tags = input[:tags]
 
 		if tags
-			tags = tags.split(',')
-
 			tags.each do |tag|
-				resource.tags << Tag.create(tag: tag)
+				self.tags << Tag.create(tag: tag)
 			end
 		end
 

@@ -6,21 +6,23 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Admin.create(email: 'matthis@me.com', password: 'password', password_confirmation: 'password')
+Admin.create(email: 'admin@admin.com', password: 'password', password_confirmation: 'password')
 
-user = User.create(firstname: 'Matthis', surname: 'Stenius', email: 'matthis@me.com')
-licence = Licence.create(licence_type: 'MIT')
-resourceType = ResourceType.create(resource_type: 'Video')
-tags = Tag.create([{tag: 'tag1'}, {tag: 'tag2'}, {tag: 'tag3'}])
+User.create([
+	{firstname: 'John', surname: 'Doe', email: 'john@doe.com'},
+	{firstname: 'Jane', surname: 'Doe', email: 'jane@doe.com'}
+])
 
-resource = Resource.new
+Licence.create([
+	{licence_type: 'MIT'},
+	{licence_type: 'GNU'},
+	{licence_type: 'CC'}
+])
 
-resource.name = 'Min resurs'
-resource.description = 'min beskrivning'
-resource.url = 'hej.com'
-resource.user = user
-resource.licence = licence
-resource.resource_type = resourceType
-resource.tags << tags
+ResourceType.create([
+	{resource_type: 'Video'}, 
+	{resource_type: 'Document'}, 
+	{resource_type: 'Image'}, 
+	{resource_type: 'Other'}
+])
 
-resource.save

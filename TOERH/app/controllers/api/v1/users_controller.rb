@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 	before_action :api_access_granted
+	before_action :check_params, only: [:create, :update]
 	respond_to :json, :xml
 	rescue_from Exception, :with => :handle_exception
 
@@ -9,20 +10,37 @@ class Api::V1::UsersController < ApplicationController
 
 		users = User.limit(limit).offset(offset).order(id: :desc)
 
-		data = users.map do |user|
-			format_data(user)
-		end
+		if users.count > 0
+			data = users.map do |user|
+				format_data(user)
+			end
 
-		result = {
-			status: 200,
-			message: 'All users',
-			count: users.count,
-			items: data,
-			rels: {
-		 		prev_link: "http://#{request.host}/api/v1/users?limit=#{limit}&offset=#{offset}",
-		 		next_link: "http://#{request.host}/api/v1/users?limit=#{limit}&offset=#{offset = offset.to_i + limit.to_i}"
-		 	}
-		}
+			if users.count < limit.to_i
+				result = {
+					status: 200,
+					message: 'All users',
+					count: users.count,
+					items: data,
+					pagination: {
+				 		prev_link: "http://#{request.host}/api/v1/users?limit=#{limit}&offset=#{offset}"
+				 	}
+				}
+			else 	
+				result = {
+					status: 200,
+					message: 'All users',
+					count: users.count,
+					items: data,
+					pagination: {
+				 		prev_link: "http://#{request.host}/api/v1/users?limit=#{limit}&offset=#{offset}",
+				 		next_link: "http://#{request.host}/api/v1/users?limit=#{limit}&offset=#{offset = offset.to_i + limit.to_i}"
+				 	}
+				}
+			end
+		else
+			response.status = 404
+			result = {status: 404, message: 'No users could be found'}
+		end
 
 		respond_with result
 	end
@@ -44,24 +62,30 @@ class Api::V1::UsersController < ApplicationController
 	def create
 		user = User.new.add(params)
 
-		data = format_data(user)
+		if user
+			data = format_data(user)
 
-		response.status = 201
+			response.status = 201
 
-		result = {status: 201, message: 'Created user successfully', items: data}
+			result = {status: 201, message: 'Created user successfully', items: data}
+		else
+			response.status = 400
+			
+			result = {status: 400, message: "An user already exist with email: #{params[:email]}"}
+		end
 
 		respond_with result, location: nil
 	end
 
 	def update
 		user = User.where(user_id: params[:id]).take!
+		
 		user.add(params)
-
 		data = format_data(user)
 
 		response.status = 201
 		result = {status: 201, message: "Updated user with ID: #{user.user_id} successfully", items: data}
-		
+			
 		respond_with do |format|
 			format.json {render json: result}
 			format.xml {render xml: result}
@@ -71,8 +95,15 @@ class Api::V1::UsersController < ApplicationController
 	def destroy
 		user = User.where(user_id: params[:id]).take!
 		user.destroy
+
+		data = {status: 200, message: 'Successfully removed user'}
+
+		respond_with do |format|
+			format.json {render json: data}
+			format.xml {render xml: data}
+		end
 	end
-	
+
 	private
 
 	def format_data(user)
@@ -84,9 +115,34 @@ class Api::V1::UsersController < ApplicationController
 				email: user.email
 			},
 			links: {
-				user_link: "http://#{request.host}/api/v1/users/#{user.user_id}"
+				user_url: "http://#{request.host}/api/v1/users/#{user.user_id}"
 			}
 		}
 	end
 
+	def check_params
+		errors = {}
+
+		if params[:firstname].nil?
+			errors[:firstname] = ["Missing firstname parameter"]
+		end
+
+		if params[:surname].nil?
+			errors[:surname] = ["Missing surname parameter"]
+		end
+
+		if params[:email].nil?
+			errors[:email] = ["Missing email parameter"]
+		end
+
+		unless errors.empty?
+			response.status = 400
+
+			errorResponse =  {status: 400, message: "Faulty parameters detected", errors: errors}
+			respond_to do |format|
+		      format.xml { render xml: errorResponse}
+		      format.json {render json: errorResponse}
+		    end
+		end
+	end
 end

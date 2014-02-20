@@ -1,5 +1,6 @@
 class Api::V1::ResourcesController < ApplicationController
 	before_action :api_access_granted
+	before_action :check_params, only: [:create, :update]
 	respond_to :json, :xml
 	rescue_from Exception, :with => :handle_exception
 
@@ -7,28 +8,37 @@ class Api::V1::ResourcesController < ApplicationController
 		limit = params[:limit] || 25
 		offset = params[:offset] || 0
 
-		if params[:user_id]
-			resources = Resource.limit(limit).offset(offset).order(id: :desc).where(user_id: params[:user_id])
-		else
-			resources = Resource.limit(limit).offset(offset).order(id: :desc)
-		end
+		resources = Resource.new.getResources(params)
 
-		if resources
+		if resources.count > 0
 			data = resources.map do |resource|
 				format_data(resource)
 			end
 
-			result = {
-				status: 200,
-				message: 'All resources',
-				count: resources.count,
-			 	items: data,
-			 	rels: {
-			 		prev_link: "http://#{request.host}/api/v1/resources?limit=#{limit}&offset=#{offset}",
-			 		next_link: "http://#{request.host}/api/v1/resources?limit=#{limit}&offset=#{offset = offset.to_i + limit.to_i}"
-			 	}
-			}
+			if resources.count < limit.to_i
+				result = {
+					status: 200,
+					message: 'All resources',
+					count: resources.count,
+				 	items: data,
+				 	pagination: {
+				 		prev_url: "http://#{request.host}/api/v1/resources?limit=#{limit}&offset=#{offset}"
+				 	}
+				}
+			else 	
+				result = {
+					status: 200,
+					message: 'All resources',
+					count: resources.count,
+				 	items: data,
+				 	pagination: {
+				 		prev_url: "http://#{request.host}/api/v1/resources?limit=#{limit}&offset=#{offset}",
+				 		next_url: "http://#{request.host}/api/v1/resources?limit=#{limit}&offset=#{offset = offset.to_i + limit.to_i}"
+				 	}
+				}
+			end
 		else
+			response.status = 404
 			result = {status: 404, message: 'No resourses could be found'}
 		end
 
@@ -36,7 +46,7 @@ class Api::V1::ResourcesController < ApplicationController
 	end
 
 	def show
-		resource = Resource.where(resource_id: params[:id]).take!
+		resource = Resource.new.getResource(params)
 		
 		data = format_data(resource)
 
@@ -46,7 +56,6 @@ class Api::V1::ResourcesController < ApplicationController
 	end	
 
 	def create
-
 		resource = Resource.new.add(params)
 
 		data = format_data(resource)
@@ -124,5 +133,39 @@ class Api::V1::ResourcesController < ApplicationController
 			}
 		}
 
+	end
+
+	def check_params
+		errors = {}
+
+		if params[:name].nil?
+			errors[:name] = ["Missing name parameter"]
+		end
+
+		if params[:description].nil?
+			errors[:description] = ["Missing description parameter"]
+		end
+
+		if params[:url].nil?
+			errors[:url] = ["Missing url parameter"]
+		end
+
+		if params[:resource_type_id].nil?
+			errors[:resource_type_id] = ["Missing resource_type_id parameter"]
+		end
+
+		if params[:licence_id].nil?
+			errors[:licence_id] = ["Missing licence_id parameter"]
+		end
+
+		unless errors.empty?
+			response.status = 400
+
+			errorResponse =  {status: 400, message: "Faulty parameters detected", errors: errors}
+			respond_to do |format|
+		      format.xml { render xml: errorResponse}
+		      format.json {render json: errorResponse}
+		    end
+		end
 	end
 end

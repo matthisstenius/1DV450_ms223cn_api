@@ -3,6 +3,7 @@
 <head>
   <title>TOERH</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "prism" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,6 +12,7 @@
 	<%= yield %>
 </div>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 </body>
 </html>

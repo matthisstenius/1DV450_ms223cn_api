@@ -2,18 +2,22 @@ class User < ActiveRecord::Base
 	has_many :resources
 	before_create :generate_uid
 
-	validates :firstname, presence: {message: 'Missing firstname parameter.'}
-	validates :surname, presence: {message: 'Missing surname parameter.'}
-	validates :email, presence: {message: 'Missing email parameter.'}
-	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => "Invalid Email"
+	validates :firstname, presence: {message: 'Invalid firstname. Must be string.'}
+	validates :surname, presence: {message: 'Invalid surname. Must be string.'}
+	validates :email, presence: {message: 'Invalid email. Must be string.'}
+	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, :message => "Invalid Email."
 
 	def add(input)
-		self.firstname = input[:firstname]
-		self.surname = input[:surname]
-		self.email = input[:email]
+		unless User.exists?(email: input[:email])
+			self.firstname = input[:firstname]
+			self.surname = input[:surname]
+			self.email = input[:email]
 
-		self.save!
-
+			self.save!
+		else
+			return false
+		end
+		
 		return self
 	end
 

@@ -4,18 +4,41 @@ class Api::V1::LicencesController < ApplicationController
 	rescue_from Exception, :with => :handle_exception
 
 	def index
-		licences = Licence.all
+		limit = params[:limit] || 25
+		offset = params[:offset] || 0
 
-		data = licences.map do |licence|
-			format_data(licence)
+		licences = Licence.limit(limit).offset(offset).order(id: :desc)
+
+		if licences.count > 0
+			data = licences.map do |licence|
+				format_data(licence)
+			end
+
+			if licences.count < limit.to_i
+				result = {
+					status: 200,
+					message: 'All licences',
+					count: data.count,
+					items: data,
+					pagination: {
+						prev_url: "http://#{request.host}/api/v1/licences?limit=#{limit}&offset=#{offset}"
+				}	}
+			else 	
+				result = {
+					status: 200,
+					message: 'All licences',
+					count: data.count,
+					items: data,
+					pagination: {
+						prev_url: "http://#{request.host}/api/v1/licences?limit=#{limit}&offset=#{offset}",
+				 		next_url: "http://#{request.host}/api/v1/licences?limit=#{limit}&offset=#{offset = offset.to_i + limit.to_i}"
+					}
+				}
+			end
+		else
+			response.status = 404
+			result = {status: 404, message: 'No licences could be found'}
 		end
-
-		result = {
-			status: 200,
-			message: 'All licences',
-			count: data.count,
-			items: data
-		}
 
 		respond_with result
 	end
@@ -44,7 +67,7 @@ class Api::V1::LicencesController < ApplicationController
 			},
 
 			links: {
-				licence_link: "http://#{request.host}/api/v1/licences/#{licence.licence_id}"
+				licence_url: "http://#{request.host}/api/v1/licences/#{licence.licence_id}"
 			}
 		}
 	end

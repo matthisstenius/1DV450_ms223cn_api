@@ -9,19 +9,50 @@ class Api::V1::ResourcetypesController < ApplicationController
 
 		resourceTypes = ResourceType.limit(limit).offset(offset).order(id: :desc)
 
-		data = resourceTypes.map do |resourceType|
-			format_data(resourceType)
+		if resourceTypes.count > 0
+			data = resourceTypes.map do |resourceType|
+				format_data(resourceType)
+			end
+
+			if resourceTypes.count < limit.to_i
+				result = {
+					status: 200,
+					message: 'All users',
+					count: resourceTypes.count,
+					items: data,
+					pagination: {
+				 		prev_url: "http://#{request.host}/api/v1/resourcetypes?limit=#{limit}&offset=#{offset}",
+				 	}
+				}
+			else 	
+				result = {
+					status: 200,
+					message: 'All users',
+					count: resourceTypes.count,
+					items: data,
+					pagination: {
+				 		prev_url: "http://#{request.host}/api/v1/resourcetypes?limit=#{limit}&offset=#{offset}",
+				 		next_url: "http://#{request.host}/api/v1/resourcetypes?limit=#{limit}&offset=#{offset = offset.to_i + limit.to_i}"
+				 	}
+				}
+			end
+		else
+			response.status = 404
+			result = {status: 404, message: 'No licencetypes could be found'}
 		end
+
+		respond_with result
+	end
+
+	def show
+		resourceType = ResourceType.where(resource_type_id: params[:id]).take!
+
+		data = format_data(resourceType)
 
 		result = {
 			status: 200,
-			message: 'All users',
-			count: resourceTypes.count,
-			items: data,
-			rels: {
-		 		prev_link: "http://#{request.host}/api/v1/resourcetypes?limit=#{limit}&offset=#{offset}",
-		 		next_link: "http://#{request.host}/api/v1/resourcetypes?limit=#{limit}&offset=#{offset = offset.to_i + limit.to_i}"
-		 	}
+			message: "Showing resourcetype with ID: #{resourceType.resource_type_id}",
+			items: data
 		}
 
 		respond_with result
@@ -36,7 +67,7 @@ class Api::V1::ResourcetypesController < ApplicationController
 				resource_type: resourceType.resource_type
 			},
 			links: {
-				resourcetype_link: "http://#{request.host}/api/v1/resourcetypes/#{resourceType.resource_type_id}"
+				resourcetype_url: "http://#{request.host}/api/v1/resourcetypes/#{resourceType.resource_type_id}"
 			}
 		}
 	end

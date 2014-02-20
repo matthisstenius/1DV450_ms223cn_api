@@ -31,6 +31,14 @@
 	.key-manage {
 		margin: 20px 0;
 	}
+
+	.pad {
+		padding: 10px;
+	}
+
+	.clearfix {
+		overflow: hidden;
+	}
 /* ----------------------------------------------------------------
  *  ￼ 	Headings
  * ----------------------------------------------------------------
@@ -42,7 +50,11 @@
 	h1 {
 
 	}
-
+	
+	h2 {
+		color: #FDFEFF;
+		font-size: 1.2em;
+	}
 /* ----------------------------------------------------------------
  *  ￼ Typography
  * ----------------------------------------------------------------
@@ -101,4 +113,47 @@
 		display: block;
 		margin-bottom: 20px;
 		width: 100%;
+	}
+
+/* ----------------------------------------------------------------
+ *  ￼ API-Docs
+ * ----------------------------------------------------------------
+*/
+	.document {
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		background-color: #FDFEFF;
+		margin: 20px 0;
+	}
+	
+	.document-header > h3, .document-header > span {
+		float: left;
+	}
+
+	.document-header {
+		border-radius: 5px 5px 0 0;
+		background-color: #1693A5;
+	}
+
+	.method {
+		display: block;
+		background-color: #334D67;
+		padding: 31px;
+		margin: -10px 0 -10px -10px;
+		color: white;
+	}
+
+	.title {
+		margin-left: 10px;
+		float: left;
+	}
+	
+	.to-top {
+		position: fixed;
+		bottom: 0;
+		right: 20px;
+		background: #556270;
+		border-radius: 3px 3px 0 0;
+		padding: 10px;
+		color: white;
 	}
