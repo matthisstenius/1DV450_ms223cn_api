@@ -1,3 +1,4 @@
+<a class="to-docs btn" href="/docs">API documentation</a>
 <h1>Enter your email below to generate your API-key</h1>
 
 <%= flash[:error] %>
@@ -9,7 +10,7 @@
 
 <% if flash[:apiKey] %>
 	<div class="key-container box">
-		<h2>Here is your credentials for using the API:</h2>
+		<h2 class="key-title">Here is your credentials for using the API:</h2>
 		
 		<span>Apikey:</span>
 		<p><%= flash[:apiKey] %></p>

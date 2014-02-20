@@ -42145,3 +42145,214 @@ Processing by Api::V1::UsersController#index as JSON
   [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count[0m
   [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count
 Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-20 20:02:26 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-20 20:02:26 +0100
+
+
+Started GET "/assets/prism.css?body=1" for 127.0.0.1 at 2014-02-20 20:02:26 +0100
+
+
+Started GET "/assets/prism.js?body=1" for 127.0.0.1 at 2014-02-20 20:02:26 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-20 20:02:26 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-02-20 20:02:44 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gSb2WXWuz9lDdlE9X1xXhqqALTkpRyFGruS0L3RStvI=", "email"=>"hej@hej.com", "commit"=>"Generate key"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."email" = 'hej@hej.com' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "api_keys" ("api_key", "created_at", "email", "updated_at") VALUES (?, ?, ?, ?)[0m  [["api_key", "6ea44d5554ef8cfadfa6"], ["created_at", Thu, 20 Feb 2014 19:02:44 UTC +00:00], ["email", "hej@hej.com"], ["updated_at", Thu, 20 Feb 2014 19:02:44 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE ("api_keys"."email" = 'hej@hej.com' AND "api_keys"."id" != 3) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-20 20:02:44 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-20 20:02:44 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-20 20:02:44 +0100
+
+
+Started GET "/assets/prism.js?body=1" for 127.0.0.1 at 2014-02-20 20:02:44 +0100
+
+
+Started GET "/assets/prism.css?body=1" for 127.0.0.1 at 2014-02-20 20:02:44 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-20 20:04:50 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/prism.js?body=1" for 127.0.0.1 at 2014-02-20 20:04:50 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-20 20:04:50 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-20 20:04:50 +0100
+
+
+Started GET "/assets/prism.css?body=1" for 127.0.0.1 at 2014-02-20 20:04:50 +0100
+
+
+Started GET "/docs" for 127.0.0.1 at 2014-02-20 20:04:52 +0100
+Processing by DocumentsController#index as HTML
+  Rendered documents/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-20 20:04:52 +0100
+
+
+Started GET "/assets/prism.css?body=1" for 127.0.0.1 at 2014-02-20 20:04:52 +0100
+
+
+Started GET "/assets/prism.js?body=1" for 127.0.0.1 at 2014-02-20 20:04:52 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-20 20:04:52 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-20 20:04:53 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-20 20:04:53 +0100
+
+
+Started GET "/assets/prism.css?body=1" for 127.0.0.1 at 2014-02-20 20:04:53 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-20 20:04:53 +0100
+
+
+Started GET "/assets/prism.js?body=1" for 127.0.0.1 at 2014-02-20 20:04:53 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-20 20:05:00 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-20 20:05:01 +0100
+
+
+Started GET "/assets/prism.css?body=1" for 127.0.0.1 at 2014-02-20 20:05:01 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-20 20:05:01 +0100
+
+
+Started GET "/assets/prism.js?body=1" for 127.0.0.1 at 2014-02-20 20:05:01 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-20 20:05:52 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-20 20:05:52 +0100
+
+
+Started GET "/assets/prism.js?body=1" for 127.0.0.1 at 2014-02-20 20:05:52 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-20 20:05:52 +0100
+
+
+Started GET "/assets/prism.css?body=1" for 127.0.0.1 at 2014-02-20 20:05:52 +0100
+
+
+Started GET "/docs" for 127.0.0.1 at 2014-02-20 20:06:03 +0100
+Processing by DocumentsController#index as HTML
+  Rendered documents/index.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/prism.js?body=1" for 127.0.0.1 at 2014-02-20 20:06:03 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-20 20:06:03 +0100
+
+
+Started GET "/assets/prism.css?body=1" for 127.0.0.1 at 2014-02-20 20:06:03 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-20 20:06:03 +0100
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-20 20:06:05 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/prism.css?body=1" for 127.0.0.1 at 2014-02-20 20:06:06 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-20 20:06:06 +0100
+
+
+Started GET "/assets/prism.js?body=1" for 127.0.0.1 at 2014-02-20 20:06:06 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-20 20:06:06 +0100
+
+
+Started POST "/generate" for 127.0.0.1 at 2014-02-20 20:06:08 +0100
+Processing by ApiKeyController#generate as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gSb2WXWuz9lDdlE9X1xXhqqALTkpRyFGruS0L3RStvI=", "email"=>"", "commit"=>"Generate key"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."email" = '' LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-20 20:06:08 +0100
+Processing by ApiKeyController#index as HTML
+  Rendered api_key/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/prism.css?body=1" for 127.0.0.1 at 2014-02-20 20:06:08 +0100
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-20 20:06:08 +0100
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-20 20:06:08 +0100
+
+
+Started GET "/assets/prism.js?body=1" for 127.0.0.1 at 2014-02-20 20:06:08 +0100
+
+
+Started GET "/api/v1/users.json" for 127.0.0.1 at 2014-02-20 20:06:31 +0100
+Processing by Api::V1::UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'b01a84c89be6c8da16d' LIMIT 1
+Filter chain halted as :api_access_granted rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
