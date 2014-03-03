@@ -1,0 +1,17 @@
+{
+  "name": "Toerh",
+  "version": "0.0.0",
+  "homepage": "https://github.com/matthisstenius/1DV450_ms223cn",
+  "authors": [
+    "Matthis Stenius <matthis@me.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
