@@ -7,7 +7,7 @@
 		<span>Email:</span>
 		<p><%= apiKey.email %></p>
 
-		<%= link_to('Remove Key', admin_path(apiKey), method: :delete ) %>	
+		<%= button_to('Remove Key', admin_path(apiKey), method: :delete) %>	
 	</div>
 	
 <% end -%>
