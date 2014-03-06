@@ -3,11 +3,11 @@
 var module = angular.module('ToerhApp.services', []);
 
 module.factory('ResourceService', ['$http', function($http) {
-	var baseUri = 'http://localhost:3000/api/v1/';
+	var baseUri = 'http://toerh.dev/api/v1/';
 
 	return {
-		all: function() {
-			return $http.get(baseUri + 'resources.json');
+		all: function(url) {
+			return $http.get(url);
 		},
 
 		show: function(id) {
