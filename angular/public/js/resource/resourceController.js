@@ -8,7 +8,6 @@ module.controller('ResourceController', ['$scope', 'ResourceService', function($
 	var resources = ResourceService.all();
 
 	resources.success(function(resources) {
-		console.log(resources);
 		$scope.resources = resources.items;
 	});
 
