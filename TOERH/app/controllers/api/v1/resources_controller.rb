@@ -1,8 +1,9 @@
 class Api::V1::ResourcesController < ApplicationController
 	before_action :api_access_granted
+	before_action :authorize, only: [:destroy, :update, :create]
 	before_action :check_params, only: [:create, :update]
 	respond_to :json, :xml
-	rescue_from Exception, :with => :handle_exception
+	#rescue_from Exception, :with => :handle_exception
 
 	def index
 		limit = params[:limit] || 25

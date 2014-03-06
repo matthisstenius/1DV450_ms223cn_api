@@ -46769,3 +46769,1523 @@ Processing by Api::V1::ResourcesController#index as JSON
   [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 189]]
   [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 188]]
 Completed 200 OK in 88ms (Views: 30.8ms | ActiveRecord: 4.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddPasswordDigestToUsersTable (20140306101203)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "users" ADD "password_digest" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140306101203"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAccesstokenToUsersTable (20140306102348)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "users" ADD "access_token" varchar(255) NOT NULL[0m
+SQLite3::SQLException: Cannot add a NOT NULL column with default value NULL: ALTER TABLE "users" ADD "access_token" varchar(255) NOT NULL
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAccesstokenToUsersTable (20140306102348)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "access_token" varchar(255)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140306102348"]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 11:51:37 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.3ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 210ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 11:55:10 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 100ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 11:59:31 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 93ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:00:09 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 162ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:00:27 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 129ms (Views: 0.1ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:00:44 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 86ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:01:00 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 4ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:01:41 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 22ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:01:57 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 88ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:02:50 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 51ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:50:42 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 85ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:51:35 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 51ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:51:41 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:52:59 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 201 Created in 20ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:53:16 +0100
+
+SyntaxError (/Users/Matthis/Sites/1DV450_ms223cn/TOERH/app/controllers/api/v1/auth_controller.rb:30: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.1ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:53:35 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 20ms
+
+NoMethodError (undefined method `take!' for #<User:0x007fd29160a520>):
+  app/TOERH/UserAuth.rb:3:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.9ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:53:53 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 20ms
+
+NoMethodError (undefined method `take!' for #<User:0x007fd292463c70>):
+  app/TOERH/UserAuth.rb:3:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:54:02 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 19ms
+
+NoMethodError (undefined method `take!' for #<User:0x007fd2925be958>):
+  app/TOERH/UserAuth.rb:3:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.7ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:54:22 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 21ms
+
+NoMethodError (undefined method `take!' for #<User:0x007fd2924b5b38>):
+  app/TOERH/UserAuth.rb:3:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.2ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:54:43 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 156ms
+
+NoMethodError (private method `generate_access_token' called for #<User:0x007fab0ac883b0>):
+  app/TOERH/UserAuth.rb:6:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.6ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:56:14 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 98ms
+
+NoMethodError (undefined method `generate_access_token' for #<User:0x007fab0b6cca88>):
+  app/TOERH/UserAuth.rb:6:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.9ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 12:56:29 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 98ms
+
+NoMethodError (undefined method `generate_access_token' for #<User:0x007fab0b6578c8>):
+  app/TOERH/UserAuth.rb:6:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.4ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:08:23 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 106ms
+
+NoMethodError (undefined method `generate_access_token' for #<User:0x007fab0ab8ad78>):
+  app/TOERH/UserAuth.rb:6:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.7ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:12:48 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 86ms
+
+NoMethodError (undefined method `generate_access_token' for #<User:0x007fab0b63ca50>):
+  app/TOERH/UserAuth.rb:6:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.4ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:14:12 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 161ms
+
+NoMethodError (undefined method `where' for #<User:0x007fc6b386c820>):
+  app/TOERH/UserAuth.rb:8:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.5ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:14:39 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 108ms
+
+NoMethodError (undefined method `where' for #<User:0x007fc6b38a4ea0>):
+  app/TOERH/UserAuth.rb:8:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.3ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:14:51 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 166ms
+
+NoMethodError (undefined method `where' for #<User:0x007f848ad9b230>):
+  app/TOERH/UserAuth.rb:8:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.4ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:16:54 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 101ms
+
+NoMethodError (undefined method `where' for #<User:0x007f848ae976e8>):
+  app/TOERH/UserAuth.rb:8:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.3ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:22:25 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."access_token" = '6facd70b77d0449120a9' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Completed 201 Created in 171ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:53:08 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."access_token" = '6ee08ee34a6093e68296' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 121ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:53:32 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 173ms
+
+NameError (undefined local variable or method `access_token' for #<TOERH::UserAuth:0x007ff39bcf9428>):
+  app/TOERH/UserAuth.rb:8:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.8ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:54:11 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+Completed 500 Internal Server Error in 102ms
+
+NameError (undefined local variable or method `access_token' for #<TOERH::UserAuth:0x007ff39bc13310>):
+  app/TOERH/UserAuth.rb:8:in `get_access_token'
+  app/controllers/api/v1/auth_controller.rb:12:in `authenticate'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.3ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 13:54:31 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."access_token" = 'd597db7de128deaf6ae0' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (12.7ms)[0m  UPDATE "users" SET "access_token" = ?, "updated_at" = ? WHERE "users"."id" = 9  [["access_token", "d597db7de128deaf6ae0"], ["updated_at", Thu, 06 Mar 2014 12:54:31 UTC +00:00]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 211ms (Views: 0.3ms | ActiveRecord: 18.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAccesstokenExpireToUsersTable (20140306132325)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "users" ADD "access_token_expire" datetime[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140306132325"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 14:25:20 +0100
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."access_token" = 'a06138ac2af57a939de1' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "access_token" = ?, "updated_at" = ? WHERE "users"."id" = 9[0m  [["access_token", "a06138ac2af57a939de1"], ["updated_at", Thu, 06 Mar 2014 13:25:20 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+Completed 201 Created in 135ms (Views: 0.3ms | ActiveRecord: 2.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1[0m
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 14:25:51 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."access_token" = '062f6efa73d844e7cf24' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "users" SET "access_token" = ?, "updated_at" = ? WHERE "users"."id" = 9[0m  [["access_token", "062f6efa73d844e7cf24"], ["updated_at", Thu, 06 Mar 2014 13:25:51 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Completed 201 Created in 89ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 14:25:52 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."access_token" = '139aa5487ab2b286a71a' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "access_token" = ?, "updated_at" = ? WHERE "users"."id" = 9[0m  [["access_token", "139aa5487ab2b286a71a"], ["updated_at", Thu, 06 Mar 2014 13:25:52 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 201 Created in 90ms (Views: 0.2ms | ActiveRecord: 1.7ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 1
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 14:26:45 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "access_token" = ?, "updated_at" = ? WHERE "users"."id" = 9[0m  [["access_token", "037b0d0f1d2e78d3d801"], ["updated_at", Thu, 06 Mar 2014 13:26:45 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 201 Created in 107ms (Views: 0.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:48:37 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1
+Completed 500 Internal Server Error in 21ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:49:25 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1
+Completed 500 Internal Server Error in 13ms (Views: 0.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:49:38 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1
+Completed 200 OK in 12ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:50:11 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1
+Completed 200 OK in 11ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:50:21 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801'[0m
+Completed 500 Internal Server Error in 20ms
+
+NoMethodError (undefined method `access_token_expire' for #<ActiveRecord::Relation::ActiveRecord_Relation_User:0x007fe154bdb338>):
+  app/controllers/application_controller.rb:39:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.4ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:51:52 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801'
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `access_token_expire' for #<ActiveRecord::Relation::ActiveRecord_Relation_User:0x007fe153554ba0>):
+  app/controllers/application_controller.rb:39:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.9ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:54:46 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801'[0m
+Completed 500 Internal Server Error in 22ms
+
+NoMethodError (undefined method `access_token_expire' for #<ActiveRecord::Relation::ActiveRecord_Relation_User:0x007fe154b22f90>):
+  app/controllers/application_controller.rb:39:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.4ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:55:19 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 21ms
+
+NoMethodError (undefined method `exists?' for #<User:0x007fe152412c48>):
+  app/controllers/application_controller.rb:35:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.0ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:55:44 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 21ms
+
+NoMethodError (undefined method `exist?' for #<User:0x007fe154c62130>):
+  app/controllers/application_controller.rb:35:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.0ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:55:48 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 20ms
+
+NoMethodError (undefined method `exist' for #<User:0x007fe1534b61a8>):
+  app/controllers/application_controller.rb:35:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.0ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:55:52 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 20ms
+
+NoMethodError (undefined method `exists' for #<User:0x007fe152bc59b8>):
+  app/controllers/application_controller.rb:35:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.9ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:55:59 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 51ms
+
+NoMethodError (undefined method `<' for nil:NilClass):
+  app/controllers/application_controller.rb:39:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.3ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:56:42 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 26ms
+
+NameError (undefined local variable or method `errorResponse' for #<Api::V1::ResourcesController:0x007fe152593a40>):
+  app/controllers/application_controller.rb:45:in `block (2 levels) in authorize'
+  app/controllers/application_controller.rb:43:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.4ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (49.1ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:57:02 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "resources" LIMIT 25 OFFSET 0) subquery_for_count
+  [1m[36mResource Load (0.3ms)[0m  [1mSELECT "resources".* FROM "resources" ORDER BY "resources"."id" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mLicence Load (0.1ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mResourceType Load (0.2ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mLicence Load (0.1ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mResourceType Load (0.1ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mResourceType Load (0.1ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mLicence Load (0.1ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mResourceType Load (0.1ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "resources" LIMIT 25 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "resources" LIMIT 25 OFFSET 0) subquery_for_count
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 212]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 211]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 210]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 209]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 208]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 207]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 206]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 205]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 204]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 203]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 202]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 201]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 200]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 199]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 198]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 197]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 196]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 195]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 194]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 193]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 192]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 191]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 190]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 189]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 188]]
+Completed 200 OK in 250ms (Views: 34.4ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:57:17 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d80' LIMIT 1[0m
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `access_token_expire' for nil:NilClass):
+  app/controllers/application_controller.rb:36:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.6ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:58:20 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d80' LIMIT 1[0m
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 11ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:59:20 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d80' LIMIT 1[0m
+Completed 500 Internal Server Error in 11ms
+
+NoMethodError (undefined method `access_token_expire' for nil:NilClass):
+  app/controllers/application_controller.rb:35:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.8ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 14:59:31 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 45ms
+
+NoMethodError (undefined method `<' for nil:NilClass):
+  app/controllers/application_controller.rb:35:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.8ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:00:06 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 21ms
+
+NoMethodError (undefined method `<' for nil:NilClass):
+  app/controllers/application_controller.rb:38:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.0ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:00:08 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `<' for nil:NilClass):
+  app/controllers/application_controller.rb:38:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (38.5ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (52.6ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:00:18 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 19ms
+
+NoMethodError (undefined method `<' for nil:NilClass):
+  app/controllers/application_controller.rb:35:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:00:28 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 79ms
+
+NoMethodError (undefined method `<' for nil:NilClass):
+  app/controllers/application_controller.rb:35:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.5ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:00:37 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 22ms
+
+NoMethodError (undefined method `<' for nil:NilClass):
+  app/controllers/application_controller.rb:39:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:01:24 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 19ms
+
+NoMethodError (undefined method `<' for nil:NilClass):
+  app/controllers/application_controller.rb:39:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.2ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:01:40 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 22ms
+
+NoMethodError (undefined method `<' for nil:NilClass):
+  app/controllers/application_controller.rb:39:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.8ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:01:52 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '037b0d0f1d2e78d3d801' LIMIT 1[0m
+Completed 500 Internal Server Error in 17ms
+
+NoMethodError (undefined method `<' for nil:NilClass):
+  app/controllers/application_controller.rb:39:in `authorize'
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.9ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 15:03:52 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."access_token" = '9e353c4472bab9331270' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.4ms)[0m  UPDATE "users" SET "access_token" = ?, "access_token_expire" = ?, "updated_at" = ? WHERE "users"."id" = 9  [["access_token", "9e353c4472bab9331270"], ["access_token_expire", Thu, 06 Mar 2014 14:08:52 UTC +00:00], ["updated_at", Thu, 06 Mar 2014 14:03:52 UTC +00:00]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 104ms (Views: 0.2ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:04:22 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '9e353c4472bab9331270' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "resources" LIMIT 25 OFFSET 0) subquery_for_count
+  [1m[36mResource Load (0.3ms)[0m  [1mSELECT "resources".* FROM "resources" ORDER BY "resources"."id" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mLicence Load (0.2ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mResourceType Load (0.2ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mLicence Load (0.1ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mResourceType Load (0.2ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mResourceType Load (0.1ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mLicence Load (0.2ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mResourceType Load (0.1ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "resources" LIMIT 25 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "resources" LIMIT 25 OFFSET 0) subquery_for_count
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 212]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 211]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 210]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 209]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 208]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 207]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 206]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 205]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 204]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 203]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 202]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 201]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 200]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 199]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 198]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 197]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 196]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 195]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 194]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 193]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 192]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 191]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 190]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 189]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 188]]
+Completed 200 OK in 189ms (Views: 24.5ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:28:14 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[35mApiKey Exists (0.4ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = '9e353c4472bab9331270' LIMIT 1[0m
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/users.json" for 127.0.0.1 at 2014-03-06 15:38:55 +0100
+Processing by Api::V1::UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 25 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count
+Completed 200 OK in 18ms (Views: 0.7ms | ActiveRecord: 1.7ms)
+
+
+Started DELETE "/api/v1/users/7f75d65bca80eb5a316969b2.json" for 127.0.0.1 at 2014-03-06 15:39:51 +0100
+Error occurred while parsing request parameters.
+Contents:
+
+{
+"email": "janne@me.com",
+
+}
+
+ActionDispatch::ParamsParser::ParseError (795: unexpected token at '{
+"email": "janne@me.com",
+
+}'):
+  app/middleware/catch_json_parse_errors.rb:31:in `call'
+
+
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered /Users/Matthis/.rvm/gems/ruby-2.0.0-p0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.1ms)
+
+
+Started DELETE "/api/v1/users/7f75d65bca80eb5a316969b2.json" for 127.0.0.1 at 2014-03-06 15:40:03 +0100
+Processing by Api::V1::UsersController#destroy as JSON
+  Parameters: {"id"=>"7f75d65bca80eb5a316969b2", "user"=>{}}
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = '9e353c4472bab9331270' LIMIT 1
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/resources.json" for 127.0.0.1 at 2014-03-06 15:44:26 +0100
+Processing by Api::V1::ResourcesController#index as JSON
+  Parameters: {"resource"=>{}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "resources" LIMIT 25 OFFSET 0) subquery_for_count
+  [1m[36mResource Load (0.3ms)[0m  [1mSELECT "resources".* FROM "resources" ORDER BY "resources"."id" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mLicence Load (0.2ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mResourceType Load (0.1ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mLicence Load (0.1ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mResourceType Load (0.1ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mResourceType Load (0.1ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mLicence Load (0.1ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mResourceType Load (0.1ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT 1  [["id", 7]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."id" = ? ORDER BY "licences"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."id" = ? ORDER BY "resource_types"."id" ASC LIMIT 1  [["id", 3]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "resources" LIMIT 25 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "resources" LIMIT 25 OFFSET 0) subquery_for_count
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 212]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 211]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 210]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 209]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 208]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 207]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 206]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 205]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 204]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 203]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 202]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 201]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 200]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 199]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 198]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 197]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 196]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 195]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 194]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 193]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 192]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 191]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 190]]
+  [1m[35mTag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 189]]
+  [1m[36mTag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?[0m  [["resource_id", 188]]
+Completed 200 OK in 123ms (Views: 20.5ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/v1/users.json" for 127.0.0.1 at 2014-03-06 15:46:31 +0100
+Processing by Api::V1::UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 25 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/user/4153074de217cb7723097add/resources.json" for 127.0.0.1 at 2014-03-06 15:47:51 +0100
+Processing by ErrorsController#catch_404 as JSON
+  Parameters: {"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "licence_id"=>"3b212465a13ac965f2593bf2", "resource_type_id"=>"de238130db383396ed41dcc6", "path"=>"api/v1/user/4153074de217cb7723097add/resources", "error"=>{"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "licence_id"=>"3b212465a13ac965f2593bf2", "resource_type_id"=>"de238130db383396ed41dcc6"}}
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/users/4153074de217cb7723097add/resources.json" for 127.0.0.1 at 2014-03-06 15:48:12 +0100
+Processing by Api::V1::ResourcesController#create as JSON
+  Parameters: {"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "licence_id"=>"3b212465a13ac965f2593bf2", "resource_type_id"=>"de238130db383396ed41dcc6", "user_id"=>"4153074de217cb7723097add", "resource"=>{"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "resource_type_id"=>"de238130db383396ed41dcc6", "licence_id"=>"3b212465a13ac965f2593bf2"}}
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = '9e353c4472bab9331270' LIMIT 1
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 15:48:32 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"matthis@me.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"matthis@me.com", "password"=>"[FILTERED]"}}
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'matthis@me.com' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."access_token" = 'bc3e6c6fdc5bbeadb7f0' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "users" SET "access_token" = ?, "access_token_expire" = ?, "updated_at" = ? WHERE "users"."id" = 9[0m  [["access_token", "bc3e6c6fdc5bbeadb7f0"], ["access_token_expire", Thu, 06 Mar 2014 14:53:32 UTC +00:00], ["updated_at", Thu, 06 Mar 2014 14:48:32 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 201 Created in 91ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/api/v1/users/4153074de217cb7723097add/resources.json" for 127.0.0.1 at 2014-03-06 15:48:43 +0100
+Processing by Api::V1::ResourcesController#create as JSON
+  Parameters: {"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "licence_id"=>"3b212465a13ac965f2593bf2", "resource_type_id"=>"de238130db383396ed41dcc6", "user_id"=>"4153074de217cb7723097add", "resource"=>{"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "resource_type_id"=>"de238130db383396ed41dcc6", "licence_id"=>"3b212465a13ac965f2593bf2"}}
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = 'bc3e6c6fdc5bbeadb7f0' LIMIT 1
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/users/4153074de217cb7723097add/resources.json" for 127.0.0.1 at 2014-03-06 15:49:56 +0100
+Processing by Api::V1::ResourcesController#create as JSON
+  Parameters: {"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "licence_id"=>"3b212465a13ac965f2593bf2", "resource_type_id"=>"de238130db383396ed41dcc6", "user_id"=>"4153074de217cb7723097add", "resource"=>{"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "resource_type_id"=>"de238130db383396ed41dcc6", "licence_id"=>"3b212465a13ac965f2593bf2"}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = 'bc3e6c6fdc5bbeadb7f0' LIMIT 1
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 22ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/api/v1/users/4153074de217cb7723097add/resources.json" for 127.0.0.1 at 2014-03-06 15:51:26 +0100
+Processing by Api::V1::ResourcesController#create as JSON
+  Parameters: {"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "licence_id"=>"3b212465a13ac965f2593bf2", "resource_type_id"=>"de238130db383396ed41dcc6", "user_id"=>"4153074de217cb7723097add", "resource"=>{"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "resource_type_id"=>"de238130db383396ed41dcc6", "licence_id"=>"3b212465a13ac965f2593bf2"}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = 'bc3e6c6fdc5bbeadb7f0' LIMIT 1
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 21ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/api/v1/users/4153074de217cb7723097add/resources.json" for 127.0.0.1 at 2014-03-06 15:51:42 +0100
+Processing by Api::V1::ResourcesController#create as JSON
+  Parameters: {"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "licence_id"=>"3b212465a13ac965f2593bf2", "resource_type_id"=>"de238130db383396ed41dcc6", "user_id"=>"4153074de217cb7723097add", "resource"=>{"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "resource_type_id"=>"de238130db383396ed41dcc6", "licence_id"=>"3b212465a13ac965f2593bf2"}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = 'bc3e6c6fdc5bbeadb7f0' LIMIT 1
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 55ms (Views: 0.3ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/api/v1/users/4153074de217cb7723097add/resources.json" for 127.0.0.1 at 2014-03-06 15:52:28 +0100
+Processing by Api::V1::ResourcesController#create as JSON
+  Parameters: {"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "licence_id"=>"3b212465a13ac965f2593bf2", "resource_type_id"=>"de238130db383396ed41dcc6", "user_id"=>"4153074de217cb7723097add", "resource"=>{"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "resource_type_id"=>"de238130db383396ed41dcc6", "licence_id"=>"3b212465a13ac965f2593bf2"}}
+  [1m[36mApiKey Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = 'bc3e6c6fdc5bbeadb7f0' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user_id" = '4153074de217cb7723097add' LIMIT 1[0m
+  [1m[35mResourceType Load (0.1ms)[0m  SELECT "resource_types".* FROM "resource_types" WHERE "resource_types"."resource_type_id" = 'de238130db383396ed41dcc6' LIMIT 1
+  [1m[36mLicence Load (0.1ms)[0m  [1mSELECT "licences".* FROM "licences" WHERE "licences"."licence_id" = '3b212465a13ac965f2593bf2' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mResource Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "resources" WHERE "resources"."resource_id" = '7f4039bbc949bd5c85719875' LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "resources" ("created_at", "description", "licence_id", "name", "resource_id", "resource_type_id", "updated_at", "url", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 06 Mar 2014 14:52:28 UTC +00:00], ["description", "odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus"], ["licence_id", 3], ["name", "Resurs"], ["resource_id", "7f4039bbc949bd5c85719875"], ["resource_type_id", 2], ["updated_at", Thu, 06 Mar 2014 14:52:28 UTC +00:00], ["url", "http://www.example.com"], ["user_id", 9]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "resources_tags" ON "tags"."id" = "resources_tags"."tag_id" WHERE "resources_tags"."resource_id" = ?  [["resource_id", 213]]
+Completed 201 Created in 68ms (Views: 1.5ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/api/v1/users.json" for 127.0.0.1 at 2014-03-06 15:52:50 +0100
+Processing by Api::V1::UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 25 OFFSET 0[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count[0m
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/users/7f75d65bca80eb5a316969b2/resources.json" for 127.0.0.1 at 2014-03-06 15:53:00 +0100
+Processing by Api::V1::ResourcesController#create as JSON
+  Parameters: {"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "licence_id"=>"3b212465a13ac965f2593bf2", "resource_type_id"=>"de238130db383396ed41dcc6", "user_id"=>"7f75d65bca80eb5a316969b2", "resource"=>{"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "resource_type_id"=>"de238130db383396ed41dcc6", "licence_id"=>"3b212465a13ac965f2593bf2"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = 'bc3e6c6fdc5bbeadb7f0' LIMIT 1[0m
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/v1/users/7f75d65bca80eb5a316969b2/resources.json" for 127.0.0.1 at 2014-03-06 15:53:48 +0100
+Processing by Api::V1::ResourcesController#create as JSON
+  Parameters: {"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "licence_id"=>"3b212465a13ac965f2593bf2", "resource_type_id"=>"de238130db383396ed41dcc6", "user_id"=>"7f75d65bca80eb5a316969b2", "resource"=>{"name"=>"Resurs", "description"=>"odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus", "url"=>"http://www.example.com", "resource_type_id"=>"de238130db383396ed41dcc6", "licence_id"=>"3b212465a13ac965f2593bf2"}}
+  [1m[35mApiKey Exists (0.1ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."access_token" = 'bc3e6c6fdc5bbeadb7f0' LIMIT 1[0m
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 19ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/api/v1/users.json" for 127.0.0.1 at 2014-03-06 15:55:19 +0100
+Processing by Api::V1::UsersController#create as JSON
+  Parameters: {"firstname"=>"test", "surname"=>"test", "email"=>"test@test.com", "password"=>"[FILTERED]", "user"=>{"firstname"=>"test", "surname"=>"test", "email"=>"test@test.com"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@test.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."user_id" = '0aa46ed52d784373a9adfef1' LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "email", "firstname", "password_digest", "surname", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?)  [["created_at", Thu, 06 Mar 2014 14:55:19 UTC +00:00], ["email", "test@test.com"], ["firstname", "test"], ["password_digest", "$2a$10$wW62Ezk9VsbLTylZQSUl0.L6buT0DdGnb0mRmNJ3aoZGzSqS2s1Hm"], ["surname", "test"], ["updated_at", Thu, 06 Mar 2014 14:55:19 UTC +00:00], ["user_id", "0aa46ed52d784373a9adfef1"]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 93ms (Views: 0.5ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/api/v1/authenticate.json" for 127.0.0.1 at 2014-03-06 15:55:43 +0100
+Processing by Api::V1::AuthController#authenticate as JSON
+  Parameters: {"email"=>"test@test.com", "password"=>"[FILTERED]", "auth"=>{"email"=>"test@test.com", "password"=>"[FILTERED]"}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test@test.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."access_token" = '52f9f865ffc37f121aa6' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "access_token" = ?, "access_token_expire" = ?, "updated_at" = ? WHERE "users"."id" = 10  [["access_token", "52f9f865ffc37f121aa6"], ["access_token_expire", Thu, 06 Mar 2014 15:00:44 UTC +00:00], ["updated_at", Thu, 06 Mar 2014 14:55:44 UTC +00:00]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 88ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started DELETE "/api/v1/users.json" for 127.0.0.1 at 2014-03-06 15:56:02 +0100
+Processing by ErrorsController#catch_404 as JSON
+  Parameters: {"path"=>"api/v1/users", "error"=>{}}
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/users.json" for 127.0.0.1 at 2014-03-06 15:56:21 +0100
+Processing by Api::V1::UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[35mApiKey Exists (0.2ms)[0m  SELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT 25 OFFSET 0
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT 1 AS count_column FROM "users" LIMIT 25 OFFSET 0) subquery_for_count
+Completed 200 OK in 6ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/api/v1/users/0aa46ed52d784373a9adfef1.json" for 127.0.0.1 at 2014-03-06 15:56:34 +0100
+Processing by Api::V1::UsersController#destroy as JSON
+  Parameters: {"id"=>"0aa46ed52d784373a9adfef1", "user"=>{}}
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = '52f9f865ffc37f121aa6' LIMIT 1
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/api/v1/users/0aa46ed52d784373a9adfef1.json" for 127.0.0.1 at 2014-03-06 15:57:04 +0100
+Processing by Api::V1::UsersController#destroy as JSON
+  Parameters: {"id"=>"0aa46ed52d784373a9adfef1", "user"=>{}}
+  [1m[36mApiKey Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "api_keys" WHERE "api_keys"."api_key" = 'a9a3a2d126efc4cafcca' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."access_token" = '52f9f865ffc37f121aa6' LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."user_id" = '0aa46ed52d784373a9adfef1' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 10]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 3.0ms)

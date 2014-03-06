@@ -14,6 +14,8 @@ TOERH::Application.routes.draw do
     namespace :v1 do
       resources :resources, only: [:index, :show]
       
+      post 'authenticate' => 'auth#authenticate'
+      
       resources :licences, only: [:index, :show] do 
         resources :resources, only: :index
       end

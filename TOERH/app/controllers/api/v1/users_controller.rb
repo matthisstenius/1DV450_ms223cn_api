@@ -1,5 +1,6 @@
 class Api::V1::UsersController < ApplicationController
 	before_action :api_access_granted
+	before_action :authorize, only: [:destroy, :update]
 	before_action :check_params, only: [:create, :update]
 	respond_to :json, :xml
 	rescue_from Exception, :with => :handle_exception

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_secure_password
+
 	has_many :resources
 	before_create :generate_uid
 
@@ -12,6 +14,8 @@ class User < ActiveRecord::Base
 			self.firstname = input[:firstname]
 			self.surname = input[:surname]
 			self.email = input[:email]
+			self.password = input[:password]
+			self.password_confirmation = input[:password]
 
 			self.save!
 		else

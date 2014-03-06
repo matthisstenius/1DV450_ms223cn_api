@@ -1,4 +1,5 @@
 require "#{Rails.root}/app/TOERH/APIAuth"
+require "#{Rails.root}/app/TOERH/UserAuth"
 
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
@@ -25,6 +26,19 @@ class ApplicationController < ActionController::Base
   			format.json {render json: errorResponse}
   		end
   	end
+  end
+
+  def authorize
+    access_token = request.headers["X-Access-Token"]
+    user = User.where(access_token: access_token).take
+
+    unless user.user_id == params[:user_id] || params[:id]
+        not_authorized()
+    else
+      if user.access_token_expire < Time.now
+        access_token_expired()
+      end
+    end
   end
 
   def handle_exception(exception)
@@ -64,6 +78,42 @@ class ApplicationController < ActionController::Base
   def internal_server_error
     response.status = 500
     errorResponse = {status: 500, message: "Opps. Something unexcpected happend. The request could not be handled. Please try again later."}
+
+    respond_to do |format|
+      format.xml { render xml: errorResponse}
+      format.json {render json: errorResponse}
+    end
+  end
+
+  def not_authorized
+    response.status = 401
+
+    errorResponse = {
+      status: 401, 
+      message: "Unauthorized request.", 
+      links: {
+        authenticate: "http://#{request.host}/api/v1/authenticate",
+        documentation: "http://#{request.host}/docs?autehnticate"
+      }
+    }
+
+    respond_to do |format|
+      format.xml { render xml: errorResponse}
+      format.json {render json: errorResponse}
+    end
+  end
+
+  def access_token_expired
+    response.status = 401
+
+    errorResponse = {
+      status: 401, 
+      message: "The access_token has expired", 
+      links: {
+        authenticate: "http://#{request.host}/api/v1/authenticate",
+        documentation: "http://#{request.host}/docs?autehnticate"
+      }
+    }
 
     respond_to do |format|
       format.xml { render xml: errorResponse}
