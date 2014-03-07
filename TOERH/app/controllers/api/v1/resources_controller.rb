@@ -3,7 +3,7 @@ class Api::V1::ResourcesController < ApplicationController
 	before_action :authorize, only: [:destroy, :update, :create]
 	before_action :check_params, only: [:create, :update]
 	respond_to :json, :xml
-	#rescue_from Exception, :with => :handle_exception
+	rescue_from Exception, :with => :handle_exception
 
 	def index
 		limit = params[:limit] || 25
@@ -16,28 +16,16 @@ class Api::V1::ResourcesController < ApplicationController
 				format_data(resource)
 			end
 
-			if resources.count < limit.to_i
-				result = {
-					status: 200,
-					message: 'All resources',
-					count: resources.count,
-				 	items: data,
-				 	pagination: {
-				 		prev_url: "http://#{request.host}/api/v1/resources?limit=#{limit}&offset=#{offset}"
-				 	}
-				}
-			else 	
-				result = {
-					status: 200,
-					message: 'All resources',
-					count: resources.count,
-				 	items: data,
-				 	pagination: {
-				 		prev_url: "http://#{request.host}/api/v1/resources?limit=#{limit}&offset=#{offset}",
-				 		next_url: "http://#{request.host}/api/v1/resources?limit=#{limit}&offset=#{offset = offset.to_i + limit.to_i}"
-				 	}
-				}
-			end
+			result = {
+				status: 200,
+				message: 'All resources',
+				count: resources.count,
+			 	items: data,
+			 	pagination: {
+			 		prev_url: "http://#{request.host}/api/v1/resources?limit=#{limit}&offset=#{offset}",
+			 		next_url: "http://#{request.host}:3000/api/v1/resources.json?limit=#{limit}&offset=#{offset = offset.to_i + limit.to_i}"
+			 	}
+			}
 		else
 			response.status = 404
 			result = {status: 404, message: 'No resourses could be found'}

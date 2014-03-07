@@ -22,8 +22,9 @@ module TOERH
     # 
     config.middleware.use Rack::Cors do
       allow do
+        @logger = Rails.logger
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
+        resource '/api/*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
       end
     end
 
