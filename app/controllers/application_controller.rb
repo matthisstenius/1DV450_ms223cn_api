@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       apiAuth = TOERH::APIAuth.new
       apiAuth.api_access(request.authorization())
     rescue Exception => e
-  		errorResponse = [status: 401, message: 'The request is not authorized. Please check that the Authorization header is included in the request.']
+  		errorResponse = [status: 401, message: 'The API-key is not valid. Please check that the key exist and is valid.']
 
   		response.status = 401
   		

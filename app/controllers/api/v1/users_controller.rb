@@ -39,8 +39,8 @@ class Api::V1::UsersController < ApplicationController
 				}
 			end
 		else
-			response.status = 404
-			result = {status: 404, message: 'No users could be found'}
+			response.status = 200
+			result = {status: 200, message: 'No users could be found'}
 		end
 
 		respond_with result
@@ -134,6 +134,10 @@ class Api::V1::UsersController < ApplicationController
 
 		if params[:email].nil?
 			errors[:email] = ["Missing email parameter"]
+		end
+
+		if params[:password].nil?
+			errors[:password] = ["Missing password parameter"]
 		end
 
 		unless errors.empty?

@@ -37,8 +37,8 @@ class Api::V1::ResourcetypesController < ApplicationController
 				}
 			end
 		else
-			response.status = 404
-			result = {status: 404, message: 'No licencetypes could be found'}
+			response.status = 200
+			result = {status: 200, message: 'No licencetypes could be found'}
 		end
 
 		respond_with result
