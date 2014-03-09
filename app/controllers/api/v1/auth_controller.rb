@@ -1,9 +1,9 @@
 require "#{Rails.root}/app/TOERH/UserAuth"
 
 class Api::V1::AuthController < ApplicationController
-	#before_action :api_access_granted
+	before_action :api_access_granted
 	respond_to :json, :xml
-	#rescue_from Exception, :with => :handle_exception
+	rescue_from Exception, :with => :handle_exception
 
 	def authenticate
 		userAuth = TOERH::UserAuth.new
