@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 
   def options
     respond_to do |format|
-      format.xml { render :nothing => true, :content_type => 'text/plain'}
-      format.json {render :nothing => true, :content_type => 'text/plain'}
+      format.xml { render :text => '', :content_type => 'text/plain'}
+      format.json {render :text => '', :content_type => 'text/plain'}
     end
   end
 
