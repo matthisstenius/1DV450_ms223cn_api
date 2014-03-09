@@ -38,12 +38,16 @@ class ApplicationController < ActionController::Base
     access_token = request.headers["X-Access-Token"]
     user = User.where(access_token: access_token).take
 
-    unless user.user_id == params[:user_id] || params[:id]
-      not_authorized()
-    else
-      if user.access_token_expire < Time.now
-        access_token_expired()
+    if user
+      unless user.user_id == params[:user_id] || params[:id]
+        not_authorized()
+      else
+        if user.access_token_expire < Time.now
+          access_token_expired()
+        end
       end
+    else
+      not_authorized()
     end
   end
 
