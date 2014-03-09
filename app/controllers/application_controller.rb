@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   after_filter :cors_set_access_control_headers
 
   def options
-    render {:text => '', :content_type => 'text/plain'}
+    respond_to do |format|
+      format.all {:text => '', :content_type => 'text/plain'}
+    end
   end
 
   def require_login
