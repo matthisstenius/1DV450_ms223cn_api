@@ -36,7 +36,7 @@ class Api::V1::AuthController < ApplicationController
 		unless user
 	    	response.status = 401
 
-		    errorResponse = {
+		    response = {
 		      status: 401, 
 		      message: "Unauthorized request.", 
 		      links: {
@@ -48,7 +48,7 @@ class Api::V1::AuthController < ApplicationController
 	    	if user.access_token_expire < Time.now
 	      		response.status = 401
 
-			    errorResponse = {
+			    response = {
 			      status: 401, 
 			      message: "The access_token has expired", 
 			      links: {
@@ -56,9 +56,14 @@ class Api::V1::AuthController < ApplicationController
 			        documentation: "http://#{request.host}/docs?autehnticate"
 			      }
 			    }
+	      else
+	      	response = {
+	      		status: 200,
+	      		message: "The access_token is valid and authorized"
+	      	}
 	      end
 	    end
 
-	    respond_with errorResponse, location: nil
+	    respond_with response, location: nil
 	end
 end
