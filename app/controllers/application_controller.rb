@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def options
     respond_to do |format|
-      format.all {:text => '', :content_type => 'text/plain'}
+      format.all {render :text => '', :content_type => 'text/plain'}
     end
   end
 
