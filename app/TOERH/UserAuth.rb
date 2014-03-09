@@ -15,9 +15,4 @@ class TOERH::UserAuth
 
 		raise ArgumentError
 	end
-
-	def authorize(access_token)
-		user = User.where(access_token: access_token).take
-		
-	end
 end
