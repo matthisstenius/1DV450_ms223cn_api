@@ -1,5 +1,5 @@
 class TOERH::UserAuth
-	def get_access_token(email, password)
+	def get_authenticated_user(email, password)
 		user = User.where(email: email).take!
 
 		if user.authenticate(password)
@@ -10,7 +10,7 @@ class TOERH::UserAuth
 			user.access_token_expire = Time.now + 300
 			user.save!
 
-			return user.access_token
+			return user
 		end
 
 		raise ArgumentError

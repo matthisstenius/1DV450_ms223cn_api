@@ -15,7 +15,6 @@ TOERH::Application.routes.draw do
       resources :resources, only: [:index, :show]
       
       post 'authenticate' => 'auth#authenticate'
-      get 'authorized/:access_token' => 'auth#check_access_token'
 
       resources :licences, only: [:index, :show] do 
         resources :resources, only: :index

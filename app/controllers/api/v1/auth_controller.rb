@@ -9,12 +9,18 @@ class Api::V1::AuthController < ApplicationController
 		userAuth = TOERH::UserAuth.new
 
 		begin
-			access_token = userAuth.get_access_token(params[:email], params[:password])
+			user = userAuth.get_authenticated_user(params[:email], params[:password])
 
 			result = {
 				status: 200,
-				message: 'Here is your access_token',
-				access_token: access_token,
+				message: 'Authentication successful',
+				access_token: user.access_token,
+				user: {
+					user_id: user.user_id,
+					firstname: user.firstname,
+					surname: user.surname,
+					email: user.email,
+				}
 			}
 		rescue Exception
 			response.status = 400
@@ -26,44 +32,5 @@ class Api::V1::AuthController < ApplicationController
 		end
 
 		respond_with result, location: nil
-	end
-
-	def check_access_token
-		access_token = params[:access_token]
-
-		user = User.where(access_token: access_token).take
-
-		unless user
-	    	response.status = 401
-
-		    response = {
-		      status: 401, 
-		      message: "Unauthorized request.", 
-		      links: {
-		        authenticate: "http://#{request.host}/api/v1/authenticate",
-		        documentation: "http://#{request.host}/docs?autehnticate"
-		      }
-		    }
-	    else
-	    	if user.access_token_expire < Time.now
-	      		response.status = 401
-
-			    response = {
-			      status: 401, 
-			      message: "The access_token has expired", 
-			      links: {
-			        authenticate: "http://#{request.host}/api/v1/authenticate",
-			        documentation: "http://#{request.host}/docs?autehnticate"
-			      }
-			    }
-	      else
-	      	response = {
-	      		status: 200,
-	      		message: "The access_token is valid and authorized"
-	      	}
-	      end
-	    end
-
-	    respond_with response, location: nil
 	end
 end
