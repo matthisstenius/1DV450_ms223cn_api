@@ -31,5 +31,6 @@ TOERH::Application.routes.draw do
     end
   end 
 
+  match "*path", to: "application#options", via: :options
   match "*path", to: "errors#catch_404", via: :all
 end
