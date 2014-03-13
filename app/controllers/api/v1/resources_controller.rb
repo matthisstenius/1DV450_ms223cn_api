@@ -84,6 +84,9 @@ class Api::V1::ResourcesController < ApplicationController
 		end
 	end
 
+	def search
+
+	end
 	private
 
 	def format_data(resource)

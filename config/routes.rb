@@ -12,6 +12,8 @@ TOERH::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get "search/:search" => "resources#index"
+
       resources :resources, only: [:index, :show]
       
       post 'authenticate' => 'auth#authenticate'
