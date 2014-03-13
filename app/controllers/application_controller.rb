@@ -3,13 +3,10 @@ require "#{Rails.root}/app/TOERH/UserAuth"
 
 class ApplicationController < ActionController::Base
   before_filter :cors_preflight_check
-  after_filter :cors_set_access_control_headers
+  #after_filter :cors_set_access_control_headers
 
   def options
     render :text => '', :content_type => 'text/plain'
-    # respond_to do |format|
-    #   format.all {render :text => '', :content_type => 'text/plain'}
-    # end
   end
 
   def require_login
@@ -21,7 +18,7 @@ class ApplicationController < ActionController::Base
   def api_access_granted
     begin
       apiAuth = TOERH::APIAuth.new
-      apiAuth.api_access(request.authorization())
+      apiAuth.api_access(request.headers['X-Api-Token'])
     rescue Exception => e
   		errorResponse = [status: 401, message: 'The API-key is not valid. Please check that the key exist and is valid.']
 
@@ -35,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    access_token = request.headers["X-Access-Token"]
+    access_token = request.authorization()
     user = User.where(access_token: access_token).take
 
     if user
@@ -134,17 +131,15 @@ class ApplicationController < ActionController::Base
   private 
 
   def cors_preflight_check
-      headers['Access-Control-Allow-Origin'] = '*'
-      headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
-      if request.method == 'OPTIONS'
-        headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Authorization, X-Access-Token, Content-Type, Origin, Accept'
-      end
-      headers['Access-Control-Max-Age'] = '1728000'
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE, PATCH, HEAD'
+    headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Authorization, X-Api-Token, Content-Type, Origin, Accept'
+    headers['Access-Control-Max-Age'] = '86400'
   end
 
   def cors_set_access_control_headers
     headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
-    headers['Access-Control-Max-Age'] = "1728000"
+    # headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
+    # headers['Access-Control-Max-Age'] = "1728000"
   end
 end

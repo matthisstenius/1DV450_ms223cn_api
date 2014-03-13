@@ -63,7 +63,7 @@ class Api::V1::ResourcetypesController < ApplicationController
 	def format_data(resourceType)
 		data = {
 			data: {
-				user_id: resourceType.resource_type_id,
+				id: resourceType.resource_type_id,
 				resource_type: resourceType.resource_type
 			},
 			links: {

@@ -11,6 +11,8 @@ class Api::V1::AuthController < ApplicationController
 		begin
 			user = userAuth.get_authenticated_user(params[:email], params[:password])
 
+			status = 200
+
 			result = {
 				status: 200,
 				message: 'Authentication successful',
@@ -23,7 +25,7 @@ class Api::V1::AuthController < ApplicationController
 				}
 			}
 		rescue Exception
-			response.status = 400
+			status = 400
 			
 			result = {
 				status: '400',
@@ -31,6 +33,6 @@ class Api::V1::AuthController < ApplicationController
 			}
 		end
 
-		respond_with result, location: nil
-	end
+		respond_with result, location: nil, status: status
+    end
 end

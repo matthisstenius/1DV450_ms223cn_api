@@ -20,7 +20,13 @@ module TOERH
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     # 
-   
+    # config.middleware.use Rack::Cors do
+    #   allow do
+    #     origins '*'
+    #     resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
+    #   end
+    # end
+
     config.middleware.insert_before ActionDispatch::ParamsParser, "CatchJsonParseErrors"
     config.autoload_paths += %W(#{config.root}/TOERH)
   end
