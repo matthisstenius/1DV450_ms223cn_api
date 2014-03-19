@@ -3,7 +3,6 @@ require "#{Rails.root}/app/TOERH/UserAuth"
 
 class ApplicationController < ActionController::Base
   before_filter :cors_preflight_check
-  #after_filter :cors_set_access_control_headers
 
   def options
     render :text => '', :content_type => 'text/plain'
@@ -135,11 +134,5 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE, PATCH, HEAD'
     headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Authorization, X-Api-Token, Content-Type, Origin, Accept'
     headers['Access-Control-Max-Age'] = '86400'
-  end
-
-  def cors_set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = '*'
-    # headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
-    # headers['Access-Control-Max-Age'] = "1728000"
   end
 end

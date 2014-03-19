@@ -8,21 +8,32 @@
 
 Admin.create(email: 'admin@admin.com', password: 'password', password_confirmation: 'password')
 
-User.create([
-	{firstname: 'John', surname: 'Doe', email: 'john@doe.com'},
+user = User.create([
+	{firstname: 'John', surname: 'Doe', email: 'john@doe.com', password: 'password', password_confirmation: 'password'},
 	{firstname: 'Jane', surname: 'Doe', email: 'jane@doe.com'}
 ])
 
-Licence.create([
+licence = Licence.create([
 	{licence_type: 'MIT'},
 	{licence_type: 'GNU'},
 	{licence_type: 'CC'}
 ])
 
-ResourceType.create([
+resourcetype = ResourceType.create([
 	{resource_type: 'Video'}, 
 	{resource_type: 'Document'}, 
 	{resource_type: 'Image'}, 
 	{resource_type: 'Other'}
 ])
 
+1.upto(78) do |i|
+    resource = Resource.new
+    resource.name = "Resource #{i}"
+    resource.description = "This is a resource description."
+    resource.url = "http://www.example.com"
+    resource.licence = licence.first
+    resource.resource_type = resourcetype.first
+    resource.user = user.first
+
+    resource.save!
+end

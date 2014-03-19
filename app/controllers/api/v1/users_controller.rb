@@ -66,22 +66,24 @@ class Api::V1::UsersController < ApplicationController
 		if user
 			data = format_data(user)
 
-			response.status = 201
+			data[:data][:access_token] = user.access_token
+
+			status = 201
 
 			result = {status: 201, message: 'Created user successfully', items: data}
 		else
-			response.status = 400
+			status = 400
 			
 			result = {status: 400, message: "An user already exist with email: #{params[:email]}"}
 		end
 
-		respond_with result, location: nil
+		respond_with result, location: nil, status: status
 	end
 
 	def update
 		user = User.where(user_id: params[:id]).take!
 		
-		user.add(params)
+		user.update(user, params)
 		data = format_data(user)
 
 		response.status = 201

@@ -1,7 +1,9 @@
+require "#{Rails.root}/app/TOERH/UserAuth"
+
 class User < ActiveRecord::Base
 	has_secure_password
 
-	has_many :resources
+	has_many :resources, :dependent => :delete_all
 	before_create :generate_uid
 
 	validates :firstname, presence: {message: 'Invalid firstname. Must be string.'}
@@ -15,7 +17,13 @@ class User < ActiveRecord::Base
 			self.surname = input[:surname]
 			self.email = input[:email]
 			self.password = input[:password]
-			self.password_confirmation = input[:password]
+			self.password_confirmation = input[:password_confirmation]
+
+			begin
+				self.access_token = SecureRandom.hex(10)
+			end while self.class.where(:access_token => self.access_token).exists?
+
+			self.access_token_expire = Time.now + 172800 ## 48 hours
 
 			self.save!
 		else
@@ -23,6 +31,19 @@ class User < ActiveRecord::Base
 		end
 		
 		return self
+	end
+
+	def update(user, input)
+
+		user.firstname = input[:firstname]
+		user.surname = input[:surname]
+		user.email = input[:email]
+		user.password = input[:password]
+		user.password_confirmation = input[:password_confirmation]
+
+		user.save!
+
+		return user
 	end
 
 	private

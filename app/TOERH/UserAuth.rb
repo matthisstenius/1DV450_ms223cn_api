@@ -7,7 +7,7 @@ class TOERH::UserAuth
 				user.access_token = SecureRandom.hex(10)
 			end while User.where(:access_token => user.access_token).exists?
 
-			user.access_token_expire = Time.now + 300
+			user.access_token_expire = Time.now + 172800 ## 48 hours
 			user.save!
 
 			return user

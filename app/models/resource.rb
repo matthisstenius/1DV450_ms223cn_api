@@ -61,6 +61,7 @@ class Resource < ActiveRecord::Base
 		tags = input[:tags]
 
 		if tags
+			self.tags = []
 			tags.each do |tag|
 				self.tags << Tag.create(tag: tag)
 			end
