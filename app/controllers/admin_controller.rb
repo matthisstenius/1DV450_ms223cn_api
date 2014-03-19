@@ -8,6 +8,6 @@ class AdminController < ApplicationController
 	def destroy
 		apiKey = ApiKey.where(:id => params[:id]).take!
 		apiKey.destroy
-		redirect_to :root
+		redirect_to '/admin'
 	end
 end

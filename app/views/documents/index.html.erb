@@ -3,6 +3,7 @@
 <nav class="api-navigation">
 	<ul>
 		<li><a href="#apikey">API-key</a></li>
+		<li><a href="#auth">Authentication &amp; Authorization</a></li>
 		<li><a href="#format">Format</a></li>
 		<li><a href="#parameters">Parameters</a></li>
 		<li><a href="#user">User</a></li>
@@ -13,7 +14,7 @@
 </nav>
 <div class="api-documents">
 	<!-- Apikey -->
-	<div class="document" id="auth">
+	<div class="document" id="apikey">
 		<header class="document-header pad clearfix">
 			<h2>API-key</h2>
 		</header>
@@ -21,14 +22,14 @@
 		<div class="information pad">
 			<p>
 				To be able to access the API you need to authenticate each request. This is done by passing
-				an <code class="language-">Authorization</code> header with containing your API-key.
+				an <code class="language-">Api-Token</code> header containing your API-key.
 			</p>
 
 			<p>You can obtain an API-key by registering you email at 
 			<a href=http://<%= request.host %>>http://<%= request.host %></a></p>
 
-			<h3>Authorization header example:</h3>
-			<code class="language-">Authorization: 28e370f09a61c17a9716</code>
+			<h3>Api-Token header example:</h3>
+			<code class="language-">Api-Token: 28e370f09a61c17a9716</code>
 
 			<p><strong>NOTE:</strong> The API-key used in this example won't work in real applications.</p>
 		</div>
@@ -37,29 +38,29 @@
 	<!-- Auth -->
 	<div class="document" id="auth">
 		<header class="document-header pad clearfix">
-			<h2>Authentication</h2>
+			<h2>Authentication &amp; Authorization</h2>
 		</header>
 		
 		<div class="information pad">
 			<p>
-				To be able to preforme unsafe methods such as POST, PUT and DELETE, you have to pass an access_token with your
+				To be able to access unsafe methods such as POST, PUT and DELETE, you have to pass an <span class="language-">Authorization</span> header with your
 				request.
 			</p>
 			
 			<p>
-				To obtain you acces_token you have to send a <code class="language-">POST</code> request 
+				To obtain you acces-token you have to send a <code class="language-">POST</code> request 
 				with your email and password to <code class="language-"><a href=http://<%= request.host %>/authenticate>http://<%= request.host %>/authenticate</a></p></code>
 			</p>
 			
 			<p>
-				For security reasons an access_token is only valid for 48 hours. Any request made after 48 hours will recieve 
-				a 401 unauthorized status code and you'll have to authenticate again to obtain a new access_token.
+				For security reasons an access-token is only valid for 48 hours. Any request made after 48 hours will recieve 
+				a 401 unauthorized status code and you'll have to authenticate again to obtain a new access-token.
 			</p>
 
-			<h3>Access-token header example:</h3>
-			<code class="language-">X-Access-Token: 28e370f09a61c17a9716</code>
+			<h3>Authorization header example:</h3>
+			<code class="language-">Authorization: 28e370f09a61c17a9716</code>
 
-			<p><strong>NOTE:</strong> The access_token used in this example won't work in real applications.</p>
+			<p><strong>NOTE:</strong> The access-token used in this example won't work in real applications.</p>
 		</div>
 	</div>
 
