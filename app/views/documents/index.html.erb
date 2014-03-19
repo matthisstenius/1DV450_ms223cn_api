@@ -21,15 +21,15 @@
 		
 		<div class="information pad">
 			<p>
-				To be able to access the API you need to authenticate each request. This is done by passing
-				an <code class="language-">Api-Token</code> header containing your API-key.
+				To be able to access the API you need to authenticate your application. This is done by passing
+				an <code class="language-">X-Api-Token</code> header containing your API-key with each request.
 			</p>
 
-			<p>You can obtain an API-key by registering you email at 
+			<p>You can obtain an API-key by registering your application at 
 			<a href=http://<%= request.host %>>http://<%= request.host %></a></p>
 
-			<h3>Api-Token header example:</h3>
-			<code class="language-">Api-Token: 28e370f09a61c17a9716</code>
+			<h3>X-Api-Token header example:</h3>
+			<code class="language-">X-Api-Token: 28e370f09a61c17a9716</code>
 
 			<p><strong>NOTE:</strong> The API-key used in this example won't work in real applications.</p>
 		</div>
@@ -43,17 +43,17 @@
 		
 		<div class="information pad">
 			<p>
-				To be able to access unsafe methods such as POST, PUT and DELETE, you have to pass an <span class="language-">Authorization</span> header with your
+				To be able to access unsafe methods such as POST, PUT and DELETE, you have to pass an <span class="language-">Authorization</span> header containing an access-token with your
 				request.
 			</p>
 			
 			<p>
-				To obtain you acces-token you have to send a <code class="language-">POST</code> request 
+				To obtain you acces-token you have to login by making a <code class="language-">POST</code> request 
 				with your email and password to <code class="language-"><a href=http://<%= request.host %>/authenticate>http://<%= request.host %>/authenticate</a></p></code>
 			</p>
 			
 			<p>
-				For security reasons an access-token is only valid for 48 hours. Any request made after 48 hours will recieve 
+				For security reasons an access-token is only valid for 48 hours. Any unsafe request, (POST, PUT, DELETE) made after 48 hours will recieve 
 				a 401 unauthorized status code and you'll have to authenticate again to obtain a new access-token.
 			</p>
 
@@ -197,7 +197,7 @@
 			<h3>Headers:</h3>
 			<ul class="params">
 				<li>string <code class="language-javascript">Authorization</code> required</li>
-				<li>string <code class="language-javascript">X-Access-Token</code> required</li>
+				<li>string <code class="language-javascript">X-Api-Token</code> required</li>
 			</ul>
 
 			<h3>Parameters:</h3>
@@ -238,7 +238,7 @@
 			<h3>Headers:</h3>
 			<ul class="params">
 				<li>string <code class="language-javascript">Authorization</code> required</li>
-				<li>string <code class="language-javascript">X-Access-Token</code> required</li>
+				<li>string <code class="language-javascript">X-Api-Token</code> required</li>
 			</ul>
 
 			<h3>Parameters:</h3>
@@ -277,7 +277,7 @@
 			<h3>Headers:</h3>
 			<ul class="params">
 				<li>string <code class="language-javascript">Authorization</code> required</li>
-				<li>string <code class="language-javascript">X-Access-Token</code> required</li>
+				<li>string <code class="language-javascript">X-Api-Token</code> required</li>
 			</ul>
 
 			<p>Delete a user.</p>
@@ -338,7 +338,7 @@
 			<h3>Headers:</h3>
 			<ul class="params">
 				<li>string <code class="language-javascript">Authorization</code> required</li>
-				<li>string <code class="language-javascript">X-Access-Token</code> required</li>
+				<li>string <code class="language-javascript">X-Api-Token</code> required</li>
 			</ul>
 
 			<h3>Parameters:</h3>
@@ -385,7 +385,7 @@
 			<h3>Headers:</h3>
 			<ul class="params">
 				<li>string <code class="language-javascript">Authorization</code> required</li>
-				<li>string <code class="language-javascript">X-Access-Token</code> required</li>
+				<li>string <code class="language-javascript">X-Api-Token</code> required</li>
 			</ul>
 
 			<h3>Parameters:</h3>
@@ -430,7 +430,7 @@
 			<h3>Headers:</h3>
 			<ul class="params">
 				<li>string <code class="language-javascript">Authorization</code> required</li>
-				<li>string <code class="language-javascript">X-Access-Token</code> required</li>
+				<li>string <code class="language-javascript">X-Api-Token</code> required</li>
 			</ul>
 
 			<p>Delete a specific users resource.</p>
