@@ -22,5 +22,5 @@ production:
   adapter: postgresql
   database: db
   username: root
-  password: SnlVoTx4jbALzBe2
-  port: 49166
+  password: K7eQlREujL5TgVyV
+  port: 49210
