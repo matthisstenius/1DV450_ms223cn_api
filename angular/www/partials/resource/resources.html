@@ -1,0 +1,59 @@
+<div data-toerh-load-more="next()" class="row" data-ng-init="search = {}">
+	<div data-ng-if="message" data-alert class="alert-box info radius">
+    	{{message}}
+	</div>
+
+	<div class="large-4 columns">
+		<select data-ng-change="search = {}" data-ng-model="searchType" ng-init="searchType = 'data'">
+			<option value="data">Name</option>
+			<option value="licence">Licence</option>
+			<option value="resource_type">Resourcetype</option>
+			<option value="user">User</option>
+			<option value="tags">Tag</option>
+		</select>
+	</div>
+
+	<div class="large-8 columns">
+		<input type="text" data-ng-model="search[searchType]" placeholder="Start typing to filter resources by given type">
+	</div>
+	
+	<p>{{resourceMessage}}</p>
+
+	<div class="small-12 medium-12 large-12 columns resource-box" data-ng-repeat="resource in resources | filter:search:false">
+		<div class="resource">
+			<header class="resource-header pad">
+				<h2>{{resource.data.name | excerpt:50}}</h2>
+			</header>
+
+			<div class="resource-content pad">
+				<p><span class="strong">Created:</span> {{resource.data.created_at | date:'longDate'}}</p>
+				<div class="large-6 columns medium-6">
+					<p><span class="strong">Created by:</span> {{resource.user.firstname}} {{resource.user.surname}}</p>
+					<p><span class="strong">URL:</span> <a href="{{resource.data.url}}">{{resource.data.url}}</a></p>
+				</div>			
+				<div class="large-6 columns medium-6">
+					<p><span class="strong">Resourcetype:</span> {{resource.resource_type.resource_type}}</p>	
+					<p><span class="strong">Licence:</span> {{resource.licence.licence}}</p>	
+				</div>
+
+				<h3>Description</h3>
+				<p>{{resource.data.description | excerpt:500}}</p>
+				
+				<h3>Tags</h3>
+
+				<p data-ng-if="resource.tags.length == 0">No tags aviable.</p>
+
+				<ul class="inline-list tags">
+					<li data-ng-repeat="tag in resource.tags" class="tag">{{tag.tag}}</li>
+				</ul>
+
+				<div data-ng-if="user">
+					<a href="" class="button" data-ng-click="removeResource(resource.data.id, $index)">Remove</a>
+					<a href="" class="button" data-ng-href="#resources/{{resource.data.id}}/edit">Edit</a>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+	<p data-ng-if="loading">Loading</p>
+</div>

@@ -1,0 +1,51 @@
+<form name="form" novalidate>
+	<div class="row">
+		<div class="large-6 columns">
+			<label>Name
+				<input type="text" name="name" data-ng-model="resource.name" required>
+			</label>
+			
+			 <div data-ng-show="form.name.$dirty && form.name.$invalid">
+                <span data-ng-show="form.name.$error.required">Enter a resource name.</span>
+            </div>
+
+			<label>Description
+				<textarea name="description" data-ng-model="resource.description" required></textarea>
+			</label>
+			
+			 <div data-ng-show="form.description.$dirty && form.description.$invalid">
+                <span data-ng-show="form.description.$error.required">Enter a resource description.</span>
+            </div>
+
+			<label>URL
+				<input type="url" name="url" data-ng-model="resource.url" placeholder="e.g http://www.example.com" required>
+			</label>
+			
+			<div data-ng-show="form.url.$dirty && form.url.$invalid">
+                <span data-ng-show="form.url.$error.required">Enter a url.</span>
+                <span data-ng-show="form.url.$error.url">Faulty url.</span>
+            </div>
+			
+		</div>
+		
+		<div class="large-6 columns">
+			<label>Tags
+				<input type="text" data-ng-model="resource.tags" placeholder="e.g tag1, tag2, tag3">
+			</label>
+
+			<label>Licence
+				<select data-ng-model="resource.licence_id" data-ng-options="l.data.id as l.data.licence_type for l in licences" required>
+					<option value="">-- Choose Licence --</option>
+				</select>
+			</label>
+
+			<label>Resourcetype
+				<select data-ng-model="resource.resource_type_id" data-ng-options="r.data.id as r.data.resource_type for r in resourceTypes" required>
+					<option value="">-- Choose Resourcetype --</option>
+				</select>
+			</label>
+		</div>
+
+		<button class="button expand" data-ng-disabled="form.$invalid" data-ng-click="save()">Save Resource</button>
+	</div>
+</form>
