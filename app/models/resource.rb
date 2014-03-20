@@ -25,7 +25,7 @@ class Resource < ActiveRecord::Base
 
 		if params[:user_id]
 			user = User.where(user_id: params[:user_id]).take!
-			resources = Resource.where(user_id: user.id)
+			resources = Resource.limit(limit).offset(offset).order(id: :desc).where(user_id: user.id)
 		elsif params[:licence_id]
 			licence = Licence.where(licence_id: params[:licence_id]).take!
 			resources = Resource.limit(limit).offset(offset).order(id: :desc).where(licence_id: licence.id)
