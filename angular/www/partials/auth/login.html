@@ -1,0 +1,23 @@
+<form>
+    <div class="row login">
+        <div class="">
+            <div data-ng-if="message" data-alert class="alert-box info radius">
+                {{message}}
+            </div>
+
+            <div class="large-12 columns">
+            	<label>Email
+            		<input type="email" data-ng-model="email">
+            	</label>
+            </div>
+
+            <div class="large-12 columns">
+            	<label>Password
+            		<input type="password" data-ng-model="password">
+            	</label>
+            </div>
+
+            <button data-ng-click="login()" class="button expand">Login</button>
+        </div>
+    </div>
+</form>

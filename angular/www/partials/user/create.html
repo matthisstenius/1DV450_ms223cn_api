@@ -1,0 +1,54 @@
+<form name="form" novalidate>
+    <div class="row">
+        <div data-ng-if="message" data-alert class="alert-box info radius">
+            {{message}}
+        </div>
+
+        <div class="large-6 columns">
+            <label>Firstname
+                <input type="text" name="firstname" data-ng-model="user.firstname" required>
+            </label>
+
+            <div data-ng-show="form.firstname.$dirty && form.firstname.$invalid">
+                <span data-ng-show="form.firstname.$error.required">Tell us your firstname.</span>
+            </div>
+            <label>Surname
+                <input type="text" name="surname" data-ng-model="user.surname" required>
+            </label>
+            
+            <div data-ng-show="form.surname.$dirty">
+                <span data-ng-show="form.surname.$error.required">Tell us your surname.</span>
+            </div>
+
+            <label>Email
+                <input type="email" name="email" data-ng-model="user.email" required email>
+            </label>
+
+            <div data-ng-show="form.email.$dirty && form.email.$invalid">
+                <span data-ng-show="form.email.$error.required">Tell us your email.</span>
+                <span data-ng-show="form.email.$error.email">Your email is in the wrong format.</span>
+            </div>
+        </div>
+        
+        <div class="large-6 columns">
+            <label>Password
+                <input type="password" name="password" data-ng-model="user.password" required>
+            </label>
+            
+            <div data-ng-show="form.password.$dirty">
+                <span data-ng-show="form.password.$error.required">Tell us your password.</span>
+            </div>
+
+            <label>Password again
+                <input type="password" name="passwordAgain" data-ng-model="user.password_confirmation" data-validate-same="user.password" required>
+            </label>
+
+            <div data-ng-show="form.passwordAgain.$dirty">
+                <span data-ng-show="form.passwordAgain.$error.required">Confirm your password.</span>
+                <span data-ng-show="form.passwordAgain.$error.same">Passwords does not match.</span>
+            </div>
+        </div>
+
+        <button class="button expand" data-ng-disabled="form.$invalid" data-ng-click="save()">Save Account</button>
+    </div>
+</form>

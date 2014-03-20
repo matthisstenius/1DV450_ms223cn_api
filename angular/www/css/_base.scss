@@ -1,0 +1,28 @@
+img {
+	display: block;
+	max-width: 100%;
+}
+
+ul {
+	padding-left: 0;
+}
+
+li {
+	list-style: none;
+}
+
+.btn {
+	display: inline-block;
+	padding: 10px 10px 10px 0;
+	border-radius: 3px;
+	color: white;
+	text-align: center;
+
+	&:hover {
+		color: white;
+	}
+}
+
+.box {
+	
+}
