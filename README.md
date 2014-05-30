@@ -1,9 +1,3 @@
 #TOERH - API
 
-Dokumentationen finns tillgänglig på `/docs`
-
-Adminpanelen finns på /admin
-
-Logga in med:
-__Email:__ admin@admin.com
-__lösenord:__ password
+Detta är ett API skapat med Ruby on Rails för kursen Webbramverk som ingår i webbprogrammerarutbildningen på Linnéuniversitetet i Kalmar.
